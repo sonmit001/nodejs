@@ -1,0 +1,27 @@
+<!-- views/hello.ejs -->
+
+﻿<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>board index</title>
+  <link rel="stylesheet" href="/css/master.css">
+ </head>
+ <body>
+  <h1>index
+    <table>
+      <tr>
+        <th>제목</th>
+        <th>글쓴이</th>
+      </tr>
+      <% boards.forEach(function(board){ %>
+      <tr>
+        <td><a href="/board/<%= board._id %>"><%= board.title %></a></td>
+        <td><%= board.writer %></td>
+      </tr>
+      <%}) %>
+    </table>
+  </h1>
+  <a href="/board/new"> new</a>
+ </body>
+</html>
