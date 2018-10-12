@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta charset="utf-8">
+   <link rel="stylesheet" href="/css/master.css">
+     <% include ../partials/head %>
+ </head>
+ <body>
+  <% include ../partials/nav %>
+    <a href="/board">Back</a>
+   </div>
+
+<div class="container">
+  <h2>New</h2>
+   <form  action="/board/edit/<%= board._id %>?_method=put" method="post">
+    <div>
+     <label for="title">title</label>
+     <input type="text" id="title" name="title" value="<%= board.title %>">
+    </div>
+    <div class="form-group" >
+     <label for="context">context</label>
+     <textarea class="form-control" rows="5" id="context" name="context"><%= board.context %></textarea>
+    </div>
+    <div>
+     <label for="writer">writer</label>
+     <input type="text" id="writer" name="writer" value="<%= board.writer %>" readonly>
+    </div>
+    <div>
+     <button type="submit" class="btn btn-default">Submit</button>
+    </div>
+   </form>
+  </div>
+</div>
+ </body>
+</html>

@@ -1,24 +1,27 @@
 ﻿<!DOCTYPE html>
 <html>
- <head>
+  <head>
   <meta charset="utf-8">
   <title>board detail</title>
   <link rel="stylesheet" href="/css/master.css">
- </head>
- <body>
+  <% include ../partials/head %>
+  </head>
+  <body>
+  <% include ../partials/nav %>
 
-<div class="showbox">
-  <div class="board_title">
-  </div>
+  <div class="container showbox">
+    <h2> <%= board.title %> </h2>
+    <hr>
   <div class="board_context">
     <%= board.context %>
   </div>
   <div class="board_menu">
       <a href="/board">Back</a>
-
+      <a href="/board/edit/<%= board._id %>">Edit</a>
+      <form action="/board/<%= board._id %>?_method=delete" method="post"> <!-- 2 -->
+     <a href="#" onclick="confirm('Do you want to delete this?')?this.parentElement.submit():null;">Delete</a> <!-- 3 -->
+    </form>
   </div>
 </div>
-
-
  </body>
 </html>

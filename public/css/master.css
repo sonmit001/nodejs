@@ -7,3 +7,12 @@ h1 {
 .name {
  color: cornflowerblue
 }
+.showbox {
+  border: 2px solid gray;
+  display: block;
+  margin-top: 60px;
+}
+.board_context{
+  margin: 30px 0;
+  min-height: 180px;
+}

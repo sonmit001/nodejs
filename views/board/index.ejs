@@ -6,22 +6,28 @@
   <meta charset="utf-8">
   <title>board index</title>
   <link rel="stylesheet" href="/css/master.css">
+  <% include ../partials/head %>
  </head>
  <body>
-  <h1>index
-    <table>
-      <tr>
-        <th>제목</th>
-        <th>글쓴이</th>
-      </tr>
+ <% include ../partials/nav %>
+
+ <div class="container">
+   <h2>INDEX</h2>
+   <p>자유롭게 글을 남겨 보세요 :)</p>
+   <table class="table table-hover" style="width:80%">
+     <thead>
+       <tr>
+         <th>제목</th>
+         <th>글쓴이</th>
+       </tr>
+     </thead>
       <% boards.forEach(function(board){ %>
-      <tr>
-        <td><a href="/board/<%= board._id %>"><%= board.title %></a></td>
-        <td><%= board.writer %></td>
+      <tr onClick="location.href='/board/<%= board._id %>'">
+        <td width="70%"><%= board.title %></td>
+        <td width="30%"><%= board.writer %></td>
       </tr>
       <%}) %>
     </table>
-  </h1>
   <a href="/board/new"> new</a>
  </body>
 </html>
