@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.robo.web.dao.AccountDaoMapper">
+	<select id="chkId" resultType="int">
+		select count(*) from account_ms where id=#{chkid}
+	</select>
+	<select id="chkNicName" resultType="int">
+		select count(*) from account_ms where nickname=#{nickname}
+	</select>
+	
+	<select id="getAccntId" resultType="int">
+		select accnt_ms.nextval from dual
+	</select>
+	
+	<insert id="joinMember" parameterType="com.robo.web.vo.UserInfo">
+		insert into account_ms (accnt_id, nickname, name, phone, id, s_passwd)
+			values(#{accnt_id}, #{nickname}, #{name}, #{phone}, #{id}, #{s_passwd})
+	</insert>
+	
+	<select id="getUserInfo" resultType="com.robo.web.vo.UserInfo">
+		select accnt_id , nickname, name, id from account_ms where accnt_id=#{accnt_id}
+	</select>
+	
+	<select id="loginMember" parameterType="com.robo.web.vo.UserInfo" resultType="com.robo.web.vo.UserInfo">
+		select id, accnt_id, nickname from account_ms 
+		where (nickname=#{id, jdbcType=VARCHAR} or id=#{id , jdbcType=VARCHAR})
+			and s_passwd = #{s_passwd}
+	</select>
+</mapper>

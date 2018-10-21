@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+
+.container{
+	position : relative;
+}
+
+.member{
+	position: absolute;
+	top: 160px;
+}

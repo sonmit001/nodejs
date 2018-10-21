@@ -5,7 +5,9 @@ var board = require("../models/Contact");
 
 // Index app
 router.get("/",function(req,res){
-  board.find({},function(err,boards){
+  board.find({})
+  .sort("-createdAt")
+  .exec(function(err,boards){
     if(err) return res.json(err);
     res.render("board/index",{boards: boards});
   });

@@ -26,6 +26,7 @@ app.use(methodOverride("_method"));
 //Toutes
 app.use("/", require("./routes/home"));
 app.use("/board", require("./routes/contacts"));
+app.use("/user", require("./routes/user"));
 
 app.listen(3000, function(){
  console.log('Server On!');
