@@ -59,14 +59,18 @@ public class MainController {
 	@Autowired
 	Board bbser;
 	
-	@RequestMapping(value="editBoard.do")
+	@RequestMapping(value="editBoard.do",method = RequestMethod.GET)
 	public String editBoard(HttpServletRequest req, HttpServletResponse res) {
 		int mtext_id = Integer.parseInt(req.getParameter("mtext_id"));
 		BoardInfo boardinfo = new BoardInfo();
 		boardinfo.setMtext_id(mtext_id);
 		BoardInfo binfo = bbser.getBoardView(boardinfo);
-		req.setAttribute("binfo", binfo);
+		req.setAttribute("bInfo", binfo);
 		return "board/editBoard";
+	}
+	@RequestMapping(value="editBoard.do" , method = RequestMethod.POST)
+	public String editBoardOk(HttpServletRequest req, HttpServletResponse res,BoardInfo bInfo) {
+		return null;
 	}
 	
 	@RequestMapping(value="writeReply.do")
@@ -208,7 +212,7 @@ public class MainController {
 
 	@RequestMapping(value = "insertFile.do", method = RequestMethod.POST)
 	public void insertFile(HttpServletRequest req, HttpServletResponse res,MultipartHttpServletRequest request) throws IOException{
-		//insert 후 id 값 가져오기
+		//temp에 insert 한다.
 		System.out.println("upload file inserting ");
 		Iterator<String> itr = request.getFileNames();
 		System.out.println("아래 itr");

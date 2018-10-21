@@ -5,7 +5,6 @@
 <title>View</title>
 <%@include file="/views/common/preset.jsp" %>
 <script type="text/javascript" src="/common/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
-<!-- <script src="/common/js/jquery.1.9.1.min.js"></script> -->
 <script src="/common/js/vendor/jquery.ui.widget.js"></script>
 <script src="/common/js/jquery.iframe-transport.js"></script>
 <script src="/common/js/jquery.fileupload.js"></script>
@@ -81,20 +80,20 @@ position: relative;
 <c:set var="binfo" value="${requestScope.bInfo}"/>
 <div id=" article-create" class="create">
 	<div class="content-head">
-		<h3>새 글쓰기</h3>
+		<h3>글 수정하기</h3>
 	</div>
 	<div class="panel panel-default">
 		<div class="panel-heading">${binfo.nickname }</div>
 		<div class="panel-body">
-		<form id="sendwrite" action="writeok.do" class="article-form">
+		<form id="sendwrite" method="post" action="editBoard.do" class="article-form">
 			<input type="hidden" id="nickname" name="nickname" value="${binfo.nickname }">
 			<div class="form-goup has-feedback">
 				<div>
-					<input type="text" name="title" id="title" class="form-control" placeholder="제목을 입력해 주세요.">
+					<input type="text" name="title" id="title" class="form-control" value="${binfo.title }">
 				</div>
 			</div>
 			<div class="form-group">
-				<textarea name="contents" id="contents" rows="10" cols="100" style="display:none;"> </textarea>
+				<textarea name="contents" id="contents" rows="10" cols="100" style="display:none;">${binfo.contents } </textarea>
 				<script type="text/javascript" src="/common/editor/js/edit.js"></script>
 			</div>
 		</form>
