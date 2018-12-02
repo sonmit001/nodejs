@@ -1,0 +1,384 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+/* 헤더 로고 폰트 */
+@import url('https://fonts.googleapis.com/css?family=Gugi');
+/* 한글 폰트*/
+@import url('https://fonts.googleapis.com/css?family=Jua');
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+/*************************
+*******Header******
+**************************/
+html { overflow-y:scroll; }
+
+.logo-text {
+    font-family: 'Gugi';
+    font-size: 50px;
+    color: #7bbfa8;
+    font-weight: 600;
+}
+
+.logo-text:hover,
+.logo-text:focus,
+.logo-text:active {
+    font-family: 'Gugi';
+    color:#9d9d9d;
+    text-decoration:none;
+}
+
+.header-ico {
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    margin: 0;
+    border-radius: 50%;
+}
+
+#header .navbar-nav.navbar-right > li a.username{
+	font-size: 15px;
+	padding-top:13px;
+	
+}
+
+.shadow{
+  -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+#header {
+    margin-bottom: 0;
+    width: 100%;
+    padding: 15px 0 0 0;
+    position: fixed;
+    z-index: 2;
+    background-color: #fff;
+}
+
+#header .navbar-inverse .container {
+    position: relative;
+    padding-left: 0px;
+}
+
+.field-toggle {
+    position: relative;
+    top: 30px;
+    right: 15px;
+    display: none;
+    height: 50px;
+}
+
+#header .navbar {
+    background: #fff;
+    border: 0;
+    margin-bottom: 0;
+}
+
+#header .navbar-toggle {
+    margin-top: 20px;
+}
+
+#header .navbar-brand {
+    padding: 15px;
+    margin-left: 0;
+}
+
+
+#header .navbar-nav.navbar-right > li:last-child {
+    margin-right: 20px;
+}
+
+#header .navbar-nav.navbar-right > li a {
+    margin-right: 3px;
+    padding-top: 5px;
+    color: #000;
+    font-size: 13px;
+    padding: 15px;
+    text-transform: uppercase;
+    font-family: 'Lato', 'Noto Sans KR', 'Spoqa Han Sans', sans-serif;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+
+#header .navbar-inverse .navbar-nav li.active > a,
+#header .navbar-inverse .navbar-nav li.active > a:focus,
+#header .navbar-nav.navbar-right li > a:hover,
+.navbar-inverse .navbar-nav > .open > a {
+    background-color: #fff;
+    border: 0;
+    color: #7bbfa8;
+}
+
+#header .navbar-inverse .navbar-nav li a:hover {
+    color: #7bbfa8;
+}
+
+/*  Dropdown menu*/
+
+ul.sub-menu {
+    display: none;
+    list-style: none;
+    padding: 0px;
+    margin: 0;
+}
+
+#groupDropdownMenu{padding-left: 3px; padding-top:3px; padding-bottom:3px; padding-right:0px}
+#noticeDropdown > ul.sub-menu{ padding-left: 3px; padding-top: 3px; padding-bottom: 3px;}
+.user.sub-menu { padding-left: 3px; padding-top: 3px; padding-bottom: 3px;}
+
+#header .navbar-nav li ul.sub-menu li a {
+	font-family: 'Lato', 'Noto Sans KR', 'Spoqa Han Sans', sans-serif;
+	font-size: 14px;
+    color: #818285;
+    padding: 5px 0;
+    display: block;
+    text-transform: capitalize;
+}
+
+#header .navbar-nav li ul.sub-menu li .active {
+    background: #7bbfa8;
+    color: #fff;
+    position: relative;
+}
+
+#header .navbar-nav li ul.sub-menu li .active i {
+    position: absolute;
+    font-size: 56px;
+    top: -13px;
+    color: #7bbfa8;
+}
+
+#header .navbar-nav li ul.sub-menu li .active .fa-angle-right {
+    left: -3px;
+}
+
+#header .navbar-nav li ul.sub-menu li .active .fa-angle-left {
+    right: -3px;
+}
+
+#header .navbar-nav li ul.sub-menu li a:hover,
+#header .navbar-nav li ul.sub-menu li a:focus {
+    background: #7bbfa8;
+    color: #fff;
+}
+
+.fa-angle-down {
+    padding-left: 5px;
+}
+
+.scaleIn {
+    -webkit-animation-name: scaleIn;
+    animation-name: scaleIn;
+}
+
+@-webkit-keyframes scaleIn {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@keyframes scaleIn {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(0);
+        -ms-transform: scale(0);
+        transform: scale(0);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1);
+    }
+}
+/* Group Notice CSS START */
+.g_alarm_ul.dropdown-menu{
+	min-width: 350px;
+	border: 1px solid #7bbfa8;
+	border-radius: 0px;
+    max-height: 290px;
+    overflow-y: auto;
+}
+
+.g_notice{
+    color: red;
+    padding-right: 15px;
+    float: right;
+}
+.g_notice:hover{
+    color: #7bbfa8;
+}
+
+.g_notice_ok{
+    color: green;
+    font-size: 17px;
+    padding: 10px;
+    padding-left: 13px;
+    cursor: pointer;
+}
+
+.fas.fa-check.g_notice_ok:hover,
+.fas.fa-check.g_notice_ok:active,
+.fas.fa-check.g_notice_ok:foucus{
+    color: #7bbfa8;
+    cursor: pointer;
+}
+
+.g_notice_no{
+    color: red;
+    font-size: 17px;
+    padding: 10px;
+    padding-left: 13px;
+    cursor: pointer;
+}
+
+.fas.fa-times.g_notice_no:hover,
+.fas.fa-times.g_notice_no:active,
+.fas.fa-times.g_notice_no:focus{
+	color: #dd4b39;
+}
+
+.g_alarm_ul > li {margin-bottom:0;}
+.g_alarm_ul.dropdown-menu{
+	padding-left: 3px;
+    padding-top: 3px;
+    padding-bottom: 0px;
+    padding-right: 3px;
+}
+
+.g_alarm_head{
+	font-family: 'Lato', 'Noto Sans KR', 'Spoqa Han Sans', sans-serif;
+	font-size: 16px;
+	font-weight: 500;
+	color: #000;
+	padding: 10px;
+}
+
+.g_alarm_name{
+	font-family: 'Lato', 'Noto Sans KR', 'Spoqa Han Sans', sans-serif;
+	font-size: 15px;
+	font-weight: 400;
+	color: #444e52;
+	padding-left: 5px;
+}
+.g_alarm_date{
+	font-family: 'Lato', 'Noto Sans KR', 'Spoqa Han Sans', sans-serif;
+	font-size: 11px;
+	font-weight: 400;
+	color: #444e52;
+	padding-left: 5px;
+}
+
+.g_alarm_content{
+	font-family: 'Lato', 'Noto Sans KR', 'Spoqa Han Sans', sans-serif;
+	font-size: 15px;
+	font-weight: 400;
+	width: 100%;
+	padding-left: 20px;
+	padding-top: 10px;
+}
+
+.g_alarm_li{
+	border-bottom: 1px solid #7bbfa8;
+	width: 100%;
+}
+/* Group Notice CSS END */
+
+
+/* Notice Alarm Style CSS START */
+
+.notice-alarm{
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    margin: 0;
+}
+/* Notice Alarm Style CSS END */
+
+/* Alarm icon css START */
+#counter {
+	background-color: #fa3e3e;
+    border-radius: 40px;
+    color: #fff;
+    padding: 0px 4px;
+    font-size: 11px;
+    position: absolute;
+    top: 2px;
+    right: 72px;
+    border: 2px solid #fff;
+}
+
+.header .navbar-inverse .navbar-nav>.open>a, 
+.header .navbar-inverse .navbar-nav>.open>a:focus, 
+.header .navbar-inverse .navbar-nav>.open>a:hover{
+	background-color: #ffffff;
+}
+
+.header .dropdown-menu > li:hover{
+	background-color: #ffffff;
+}
+
+.g_alarm_ul::-webkit-scrollbar{width: 10px; height: 8px;}
+.g_alarm_ul::-webkit-scrollbar-track {background-color:#fff0;}
+.g_alarm_ul::-webkit-scrollbar-thumb {background-color:#7bbfa8; border-radius: 10px;}
+.g_alarm_ul::-webkit-scrollbar-thumb:hover {background: #466b5e;}
+.g_alarm_ul::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
+    width: 5px;
+    height: 5px;
+    background: #fff0;
+}
+/* Text shake ani */
+#alarm_menu {
+	animation-duration: 1.5s;
+	animation-delay: 1s;
+	animation-iteration-count: infinite;
+}
+/* icon shake */
+/* @-webkit-keyframes spaceboots {
+	0% { -webkit-transform: translate(2px, 1px) rotate(0deg); }
+	10% { -webkit-transform: translate(-1px, -2px) rotate(-1deg); }
+	20% { -webkit-transform: translate(-3px, 0px) rotate(1deg); }
+	30% { -webkit-transform: translate(0px, 2px) rotate(0deg); }
+	40% { -webkit-transform: translate(1px, -1px) rotate(1deg); }
+	50% { -webkit-transform: translate(-1px, 2px) rotate(-1deg); }
+	60% { -webkit-transform: translate(-3px, 1px) rotate(0deg); }
+	70% { -webkit-transform: translate(2px, 1px) rotate(-1deg); }
+	80% { -webkit-transform: translate(-1px, -1px) rotate(1deg); }
+	90% { -webkit-transform: translate(2px, 2px) rotate(0deg); }
+	100% { -webkit-transform: translate(1px, -2px) rotate(-1deg); }
+} */
+
+#counter {
+	-webkit-animation-name: spaceboots;
+	-webkit-animation-duration: 0.2s;
+	-webkit-transform-origin:50% 50%;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+}
+
+
+.alarm-count-div {
+	position: absolute;
+    top: 5px;
+    left: 2px;
+    height: 15px;
+    width: 15px;
+    color: rgb(255, 131, 0);
+    font-weight: 900;
+    font-size: 12px;
+    font-family: sans-serif;
+    
+    animation-duration: 1.5s;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+}
+/* Alarm icon css END */

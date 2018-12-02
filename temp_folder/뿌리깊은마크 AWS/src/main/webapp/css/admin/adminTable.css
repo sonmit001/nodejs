@@ -1,0 +1,112 @@
+#page-wrapper {
+	padding: 0 15px;
+	min-height: 568px;
+	background-color: #eee;
+	text-align: center;
+}
+
+@media ( min-width : 768px) {
+	#page-wrapper {
+		position: inherit;
+		margin: 0 0 28px 0;
+		padding: 0 30px;
+		text-align: left;
+	}
+}
+
+.panel {
+	color: #000;
+	background-color: #eee;
+	padding: 16px 25px;
+	margin: -20px -25px 10px;
+	border-radius: 3px 3px 0 0;
+}
+
+.panel-body table.dataTable thead :after, 
+.panel-body table.dataTable thead :before{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	color: #d9534f;
+	padding-left: 5px;
+}
+
+.panel-body table tr>th{
+    color: #da2929;
+    font-size:15px;
+    font-weight: 400;
+}
+
+.panel-body table.dataTable thead .sorting:after {
+	content: "\f0dc";
+	float: right;
+	color: #eee;
+}
+
+table.table tr th, table.table tr td {
+	border-color: #eee;
+	text-align: center;
+	font-size: 15px;
+}
+
+table.table-hover tbody tr:hover {
+	background: #8aa4af;
+	color: #fff;
+}
+
+table.table-hover tbody tr:hover a,
+table.table-hover tbody tr:hover i {
+	color: #fff;
+}
+
+table.table-hover a {
+	color: #000;
+}
+
+.adminSocial table tbody tr th.table-date{
+	white-space: nowrap !important;
+}
+
+.adminSocial table tbody tr td.table-date{
+    width: 12.5% !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip !important;
+}
+
+.adminSocial table.dataTable thead > tr > th {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+
+.pagination {
+	float: right;
+	margin: 0 0 5px;
+}
+
+.pagination li a {
+	border: none;
+	font-size: 13px;
+	min-width: 30px;
+	min-height: 30px;
+	padding: 0 10px;
+	color: #222d32;
+	margin: 0 2px;
+	line-height: 30px;
+	border-radius: 30px !important;
+	text-align: center;
+}
+
+.pagination li a:hover {
+	color: #fff;
+	background: #222d32;
+}
+
+.pagination li.active a {
+	background: #8aa4af;
+}
+
+.pagination li.active a:visited {
+	background: #8aa4af;
+}

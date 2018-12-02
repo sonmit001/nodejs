@@ -1,0 +1,83 @@
+/*
+ *
+ * addBookmarkStepModal-css css
+ * 
+ */
+
+@charset "UTF-8";
+
+.addBookmark .btn-next, .addBookmark .btn-prev, .addBookmark .btn-comp{
+    background-color: #7bbfa8; 
+    border-color: #7bbfa8;
+    border-width: 0;
+    color: #FFFFFF;
+    margin: 0 auto;
+    padding: 15px 10px;
+    text-transform: uppercase;
+    width: 10%;
+}
+.addBookmark .btn-next:hover, .addBookmark .btn-prev:hover, .addBookmark .btn-comp:hover{
+    background-color: #7bab94; 
+    color: #FFFFFF;
+}
+
+.addBookmark .btn-hash{
+    background-color: #7bbfa8; 
+    border-color: #7bbfa8;
+    border-width: 0;
+    color: #FFFFFF;
+    margin: 5px;
+    padding: 15px 50px;
+    text-transform: uppercase;
+}
+.addBookmark .btn-hash:hover{
+    background-color: #7bab94; 
+    color: #FFFFFF;
+}
+
+.addBookmark .form-control{
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.09);
+    box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.09) inset;
+    color: #FFFFFF;
+}
+.addBookmark .form-control:hover{
+    background-color: rgba(0,0,0,.16);
+}
+.addBookmark .form-control:focus{
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.04) inset;
+    background-color: rgba(0,0,0,0.23);
+    color: #666666;
+}
+.addBookmark .form input[type="text"]{
+    border-radius: 3px;
+    border: none;
+    color: #333333;
+    font-size: 16px;
+    height: 46px;
+    margin-bottom: 5px;
+    padding: 13px 12px;
+    width: 100%;
+}
+
+.addBookmark .form select{
+    border-radius: 3px;
+    border: none;
+    color: #666666;
+    display: inline-block;
+    font-size: 16px;
+    height: 46px;
+    margin-bottom: 5px;
+    padding: 13px 12px;
+    width: 25%;
+}
+
+
+.addBookmark .form input[type="checkbox"] {
+    color: #333333;
+    display: inline-block;
+    vertical-align:middle;
+    margin: 0 auto;
+    height: 20px;
+    width: 20px;
+}

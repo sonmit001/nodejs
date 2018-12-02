@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="site.book.team.dao.G_AlarmDAO">
+	<delete id="deleteAllGroupAlarm">
+		DELETE FROM G_ALARM WHERE TOID = #{uid} OR FROMID = #{uid}
+	</delete>
+	
+	<!-- 태웅 -->
+	<select id="alreadySend" resultType="Integer">
+		SELECT count(*) FROM `G_ALARM` WHERE TOID=#{toid} AND FROMID=#{fromid} AND GID=#{gid} AND GAID=#{gaid}
+	</select>
+	
+	<select id="getAlarmList" resultType="site.book.team.dto.G_MyAlarmDTO">
+		SELECT TOID, you.NNAME as FROMID, team.GID, team.GNAME, kind.GANAME, date_format(SENDDATE, '%Y-%m-%d %H:%i') as SENDDATE 
+		FROM `G_ALARM` msg 
+		JOIN `TEAM` team ON msg.GID= team.GID
+		JOIN `G_ALARM_KIND` kind ON msg.GAID= kind.GAID
+		JOIN `USER` you ON msg.FROMID= you.UID
+		WHERE TOID = #{uid}
+		ORDER BY SENDDATE
+	</select>
+	
+	<delete id="deleteMemo">
+		<choose>
+			<when test="gaid == 1"><!-- 초대 쪽지 -->
+				DELETE FROM `G_ALARM` WHERE TOID=#{toid} AND FROMID=(SELECT UID FROM `USER` WHERE NNAME=#{fromid}) AND GID=#{gid} AND GAID=#{gaid};
+			</when>
+			<otherwise><!-- 완료/강퇴 쪽지 -->
+				DELETE FROM `G_ALARM` WHERE TOID=#{toid} AND GID=#{gid} AND GAID=#{gaid};
+			</otherwise>
+		</choose>
+	</delete>
+	
+	<select id="alreadyJoin" parameterType="site.book.team.dto.G_MemberDTO" resultType="Integer">
+		SELECT count(*) FROM `G_MEMBER` WHERE UID=#{uid} and GID=#{gid}
+	</select>
+	
+	<insert id="joinGroup" parameterType="site.book.team.dto.G_MemberDTO">
+		INSERT INTO `G_MEMBER`(UID, GID, CCOUNT, GRID) VALUES(#{uid}, #{gid}, 0, 3);
+	</insert>
+	
+</mapper>

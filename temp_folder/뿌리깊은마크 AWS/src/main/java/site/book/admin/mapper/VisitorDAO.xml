@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="site.book.admin.dao.VisitorDAO">
+	<insert id="insertVisitor">
+		INSERT
+        INTO VISITOR
+        (
+            VIP,
+            VTIME,
+<!--             <if test="vrefer != null and vrefer !=''">
+            VREFER,
+            </if> -->
+            VAGENT
+        )
+        VALUES
+        (
+            #{vip},
+            SYSDATE(),
+<!--             <if test="vrefer != null and vrefer !=''">
+            #{vrefer},
+            </if> -->
+            #{vagent}
+        )
+	</insert>
+	
+	<select id="selectAllVisitor" resultType="Integer">
+		SELECT COUNT(*) FROM VISITOR
+	</select>
+	
+	<select id="numOfVisitorByDate" resultType="java.util.HashMap">
+		SELECT DATE_FORMAT(VTIME,'%Y-%m-%d') d, COUNT(*) AS c FROM VISITOR GROUP BY d
+	</select>
+</mapper>

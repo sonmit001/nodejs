@@ -1,0 +1,147 @@
+@media only screen and (min-width : 768px) {
+  .nav.navbar-nav > li:hover > ul.sub-menu{
+    display: block;
+    -webkit-animation: fadeInUp 400ms;
+    animation: fadeInUp 400ms;
+  }
+  ul.sub-menu {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background: #fff;
+    padding: 10px 0;
+    width: 200px;
+    box-shadow: none;
+    display: none;
+    z-index: 999;
+    border: 1px solid #7bbfa8;
+  }
+  #header .navbar-nav li ul.sub-menu li a {
+    padding-left: 20px;
+  }
+}
+/* 
+@media only screen and (max-width : 962px) {
+	#home-slider{ height: 365px}
+	.slide-hill{ 
+		top: 45%; 
+		height: 100%; 
+		left: 60%
+	}
+	#header{
+		top: 0;
+	}	
+} */
+/* sm */
+@media only screen and (max-width : 992px) {
+  h1{
+    font-size: 25px;
+  }
+  #header .navbar-nav.navbar-right li {
+    padding: 0;
+  }
+  #header .navbar-nav.navbar-right >li a {
+    padding: 20px 10px;
+  }
+ /*  #home-slider {
+    margin-top: 140px;
+  } */
+ /*  #home-slider .main-slider {
+    height: 250px;
+  } */
+  
+  #home-slider .slide-text {
+    width: 60%;
+    padding-left: 0px;
+    font-size: 22px;
+    top: 32px;
+    position: absolute
+  }
+  #home-slider h1 {
+    margin-top: 0;
+  }
+  #home-slider .slider-hill {
+    width: 400px;
+  }
+}
+/* xs */
+@media only screen and (max-width : 768px) {
+  h1{
+    font-size: 22px;
+  }
+  h2{
+    font-size:20px;
+  }
+  .padding{
+    padding: 30px 0;
+  }
+  #header {
+    padding-bottom: 40px;
+    padding-top: 10px;
+    top: 0px;
+  }
+  #header .navbar-inverse .navbar-toggle,
+  #header .navbar-inverse .navbar-toggle:focus {
+    border-color: #00aeef;
+    margin-top: 15px;
+    margin-right: 5px;
+    outline: none;
+  }
+  .navbar-header .navbar-toggle .icon-bar {
+    background-color: #00aeef;
+  }
+  #header .navbar-inverse .navbar-toggle:hover {
+    background: #00aeef;
+  }
+  #header .navbar-inverse .navbar-toggle:hover .icon-bar {
+    background: #fff;
+  }
+ 
+  .navbar-inverse .navbar-collapse
+  {
+    border-top: 0;
+  }
+  .navbar.navbar-inverse {
+    margin-top: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  #header .navbar-nav.navbar-right li > a > i {
+    display: inline-block;
+    float: right;
+    padding: 8px 10px 8px 30px
+  }
+  #header .navbar-nav.navbar-right li > a {
+    padding: 10px 0;
+  }
+  #header .navbar-nav li ul.sub-menu li a {
+    padding: 5px 10px;
+  }
+  #header .navbar-inverse .navbar-nav li.active > a, 
+  #header .navbar-inverse .navbar-nav li.active > a:focus, 
+  #header .navbar-nav.navbar-right li > a:hover {
+    border: none;
+  }
+/* 헤더 END */
+/* 메인 페이지 이미지 START */
+  #home-slider {
+    margin: 50px 20px;
+  }
+  #home-slider .main-slider {
+    height: 500px;
+  }
+  #home-slider .slide-text {
+    top: 0;
+    width: 100%;
+    text-align: center;
+  }
+/* 메인 페이지 이미지 END */
+
+}
+@media only screen and (max-width: 1198px){
+	#home-slider .slider-hill{
+      /* 	width: 50%;
+    	height: 70%; */
+    	left: 60%;
+	}	
+}

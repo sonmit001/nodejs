@@ -1,0 +1,185 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+/* 헤더 로고 폰트 */
+@import url('https://fonts.googleapis.com/css?family=Gugi');
+/* 한글 폰트*/
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+.skin-blue > * {
+    font-family: 'Lato', 'Noto Sans KR', 'Spoqa Han Sans';
+}
+
+.skin-blue .main-header .navbar {
+    background: linear-gradient(to left, rgb(19, 158, 149) 0, #3f8ca6 70%);
+	padding-right: 50px;
+}
+
+.skin-blue .main-header .navbar .nav > li > a {
+    color: #fff;
+    font-size:14px;
+}
+
+.skin-blue .main-header .navbar .nav > li > a:hover,
+.skin-blue .main-header .navbar .nav > li > a:active,
+.skin-blue .main-header .navbar .nav > li > a:focus,
+.skin-blue .main-header .navbar .nav .open > a,
+.skin-blue .main-header .navbar .nav .open > a:hover,
+.skin-blue .main-header .navbar .nav .open > a:focus,
+.skin-blue .main-header .navbar .nav > .active > a {
+    background: rgba(68, 75, 82, 0.1);
+    color: #f6f6f6
+}
+
+.skin-blue .main-header .navbar .sidebar-toggle {
+    color: #fff
+}
+
+.skin-blue .main-header .navbar .sidebar-toggle:hover {
+    color: #f6f6f6;
+    background: rgba(0, 0, 0, 0.1)
+}
+
+.skin-blue .main-header .navbar .sidebar-toggle {
+    color: #fff
+}
+
+.skin-blue .main-header .navbar .sidebar-toggle:hover {
+    background-color: #3f8ca6
+}
+
+
+@media (max-width:767px) {
+    .skin-blue .main-header .navbar .dropdown-menu li.divider {
+        background-color: rgba(255, 255, 255, 0.1)
+    }
+    .skin-blue .main-header .navbar .dropdown-menu li a {
+        color: #fff
+    }
+    .skin-blue .main-header .navbar .dropdown-menu li a:hover {
+        background: #3f8ca6
+    }
+}
+
+.skin-blue .main-header .logo {
+    background-color: #3f8ca6;
+    color: #fff;
+    border-bottom: 0 solid transparent ;
+    font-family: 'Gugi';
+    font-weight: 600;
+    font-size: 30px;
+
+}
+
+.skin-blue .main-header .logo:hover {
+    cursor: pointer;
+}
+
+.skin-blue .main-header li.user-header {
+    background-color: #3f8ca6;
+}
+
+.skin-blue .content-header {
+    background: transparent;
+    margin-top: 58px;
+}
+
+.skin-blue .wrapper,
+.skin-blue .main-sidebar,
+.skin-blue .left-side {
+    background: linear-gradient(to top, rgb(19, 158, 149) 0, #3f8ca6 70%);
+}
+
+.skin-blue .user-panel > .info,
+.skin-blue .user-panel > .info > a {
+    color: #fff
+}
+.skin-blue .sidebar-menu > li.header {
+    color: #fff;
+    border-bottom: 2px solid #efefef;
+    font-size:16px;
+}
+
+.skin-blue .sidebar-menu > li > a {
+    border-left: 5px solid transparent
+}
+
+.skin-blue .sidebar-menu > li:hover > a,
+.skin-blue .sidebar-menu > li.active > a {
+    color: #fff;
+    background-color: #65757c;
+    border-left: 5px solid #09e5d8;
+}
+
+.skin-blue .sidebar-menu > li > .treeview-menu {
+    margin: 0 1px;
+    background: #3f8ca6
+}
+
+.skin-blue .sidebar a {
+    color: #fff;
+}
+
+.skin-blue .sidebar a:hover {
+    text-decoration: none;
+}
+
+.skin-blue .treeview-menu > li > a {
+    color: #fff
+}
+
+.skin-blue .treeview-menu > li.active > a,
+.skin-blue .treeview-menu > li > a:hover {
+    color: #fff
+}
+
+.skin-blue .sidebar-form {
+    border-radius: 3px;
+    border: 1px solid #374850;
+    margin: 10px 10px
+}
+
+.skin-blue .sidebar-form input[type="text"],
+.skin-blue .sidebar-form .btn {
+    box-shadow: none;
+    background-color: #374850;
+    border: 1px solid transparent;
+    height: 35px;
+    -webkit-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out
+}
+
+.skin-blue .sidebar-form input[type="text"] {
+    color: #666;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 2px
+}
+
+.skin-blue .sidebar-form input[type="text"]:focus,
+.skin-blue .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+    background-color: #fff;
+    color: #666
+}
+
+.skin-blue .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+    border-left-color: #fff
+}
+
+.skin-blue .sidebar-form .btn {
+    color: #999;
+    border-top-left-radius: 0;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 0
+}
+
+.skin-blue.layout-top-nav .main-header > .logo {
+    background-color: #3f8ca6;
+    color: #fff;
+    border-bottom: 0 solid transparent
+}
+
+.skin-blue.layout-top-nav .main-header > .logo:hover {
+    background-color: #3f8ca6
+}

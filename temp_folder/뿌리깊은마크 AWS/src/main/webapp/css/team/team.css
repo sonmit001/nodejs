@@ -1,0 +1,530 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+/* 헤더 로고 폰트 */
+@import url('https://fonts.googleapis.com/css?family=Gugi');
+/* 한글 폰트*/
+@import url('https://fonts.googleapis.com/css?family=Jua');
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+body{
+	font-family: 'Lato','Noto Sans KR', 'Spoqa Han Sans';
+}
+
+.container-fluid.team-container{
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    width: 1350px;
+    
+}
+.modal { z-index: -10; }
+.modal-open .modal { z-index: 1050; }
+
+.jstree-modal-center{
+	 margin: 0;
+    position: absolute;
+    top: 30%;
+    left: 30%;
+}
+.main-modal-controller { display: table-row; width: 100%; }
+.main-modal-center { 
+	display: table-cell; 
+	vertical-align: middle; 
+	position: absolute;
+    padding-bottom: 50px;
+    top: 30%;
+    left: 30%;
+}
+.whole-body{margin-top:100px;}
+.container-fluid.team-container .row .col-sm-12{
+    border : 5px double #000;
+    margin-bottom: 0px;
+    height: 100%;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    background-color: #e3d1b9;
+}
+
+.top-content{
+    box-shadow: 2px 2px 5px 1px #000;
+    background-color: #fff;
+}
+
+.container-fluid.top{
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #fff;
+}
+
+.container-fluid.content{
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 5px;
+}
+
+.my .container-fluid.top > .row > .col-sm-12,
+.col-sm-3.group-category,
+.col-sm-6.chat,
+.col-sm-2.group-member {
+    background-color: #fff0;
+}
+
+.container-fluid{
+    padding-left: 80px;
+    padding-right: 55px;
+}
+.jstree-modal-fromgrouptomy{
+		 margin: 0;
+    position: absolute;
+    top: 20%;
+    left: 30%;
+}
+
+/* Top Content CSS START */
+.teamname{
+	height: 50px;
+	font-family: 'Jua';
+	font-size: 35px;
+	color: #596359;
+}
+
+.teamname-ico{
+	font-size: 35px;
+	font-style: oblique;
+	padding-right: 15px;
+	color: #FF4057;
+	vertical-align: middle;
+}
+
+/* Top Content CSS END */
+
+/* group-member css START */
+.group-master {
+	margin-left: 2px;
+	font-size: 10px;
+    color: orange;
+    vertical-align: text-top;
+}
+
+.group-manager {
+	margin-left: 3px;
+	font-size: 14px;
+    color: #dd77ff;
+    vertical-align: text-top;
+}
+
+.group-member{
+    padding: 5px;
+    height: 700px;
+    background-color: #fff0;
+}
+
+.group-member-content{ 
+    height: 100%;
+    width: 100%;
+    border: 1px solid #8aa4af;
+    border-radius: 15px 15px 15px 15px;
+    box-shadow: 5px 6px 10px 3px;
+    background-color: #fff;
+}
+.group-member-header {
+	font-family: 'Jua';
+    min-height: 45px;
+    max-height: 45px;
+    padding: 10px;
+    border-bottom: 1px solid #888888;
+    border-radius: 8px 10px 0px 0px;
+    background-color: #7bbfa8;
+    color: #fff;
+}
+.group-member-header > p {
+    font-size: 20px;
+    font-weight: 500;
+}
+.group-member-header > p > .fa-user-plus {
+    margin-top: 3px;
+    font-size: 20px;
+    font-weight: 600;
+    float: right;
+    cursor: pointer;
+}
+.onoffline-content{ height: 640px; overflow-y: auto;}
+.online-content,
+.offline-content{ width: 100% }
+
+.online{
+	font-family: 'Jua';
+    padding-left : 15px;
+    padding-top : 10px;
+    padding-bottom : 5px;
+    font-size: 16px;
+    width: 100%;
+    border-bottom: 2px solid #8aa4af;
+}
+
+.offline{
+	font-family: 'Jua';
+    padding-left : 15px;
+    padding-top : 10px;
+    padding-bottom : 5px;
+    font-size: 16px;
+    width: 100%;
+    border-bottom: 2px solid #8aa4af;
+    border-top : 2px solid #8aa4af;
+}
+
+.online > i,
+.offline >i{
+	padding-bottom: 5px;
+}
+/****** height 벗어나면 수정 필요 *****/
+.online-member,
+.offline-member{
+    padding-top: 10px;
+    overflow-y: auto;
+}
+/****** height 벗어나면 수정 필요 *****/
+
+.member{
+    width:100%;
+    font-size: 17px;
+    font-family: 'Jua';
+    margin-bottom: 8px;
+    padding-left: 10px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.fas.fa-toggle-on{
+    color: #7bbfa8;
+    font-size: 25px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.fas.fa-toggle-off{
+    color: #222d32;
+    font-size: 25px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+.member_insert_ico.fas.fa-user-plus:hover,
+.member_insert_ico.fas.fa-user-plus:focus,
+.member_insert_ico.fas.fa-user-plus:active{
+	color: #ee7785;
+}
+
+.member-ico{
+    border: 1px solid #fff;
+    border-radius: 50%;
+    width: 28px;
+    height: 26px;
+    margin-right: 5px;
+}
+
+.online-ico{
+	color: green;
+	margin-right: 5px;
+	font-size: 12px;
+}
+
+.offline-ico{
+	color: gray;
+	margin-right: 5px;
+	font-size: 12px;
+}
+
+.whole-body{ 
+    height: 100%; 
+    vertical-align: middle;
+    background-image: url('https://data.ac-illust.com/data/thumbnails/fa/fa2a672a7db92d77b1df1d650b6b0806_w.jpeg');
+}
+.col-sm-12 .col-sm-7{ height: 100%;}
+.col-sm-12 .col-sm-5.option{ text-align: right;}
+.team-ico{
+    font-size: 25px;
+    margin-right: 10px;
+    color: #fb7070;
+}
+
+.col-sm-5.option .option-ico a{text-decoration: none;}
+.member_insert_input{
+    border: 1px solid green;
+    border-radius: 5px 5px;
+    width: 100%;
+    padding-left: 5px;
+}
+/* group-member css END */
+
+/* group-chart CSS START */
+.chat-element::-webkit-scrollbar{width: 10px;}
+.chat-element::-webkit-scrollbar-track {background-color:#fff0;}
+.chat-element::-webkit-scrollbar-thumb {background-color:#7bbfa8; border-radius: 10px;}
+.chat-element::-webkit-scrollbar-thumb:hover {background: #466b5e;}
+.chat-element::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
+    width: 5px;
+    height: 5px;
+    background-color: #fff0;
+}
+
+.chat {
+    height: 700px;
+    padding: 5px;
+    background-color: #fff0;
+}
+
+.chat-content-div { 
+    height: 100%; 
+    border: 1px solid #8aa4af;
+    border-radius: 15px 15px 15px 15px;
+    box-shadow: 5px 6px 10px 3px;
+    background-color: #fff;
+}
+.chat-header {
+	font-family: 'Jua';
+    padding: 5px;
+    min-height: 45px;
+    max-height: 45px;
+    background-color: #7bbfa8;
+    border-radius: 8px 8px 0px 0px;
+}
+.chat-header .chatting-roomname {
+    font-size: 20px;
+    font-weight: 500;
+    padding: 5px 0px 0px 10px;
+    float: left;
+    color : #fff;
+}
+.header-divider {
+    position: relative;
+    top: -15px;
+    left: -4px;
+    width:100%;
+    text-align:center;
+    border-radius: 13px 13px 0px 0px;
+    border-bottom-color: #7bbfa8;;
+    clear: both;
+}
+.header-divider span { color:#fff; font: 15px sans-serif; text-transform: uppercase; }
+.header-divider hr { margin: 0px; width:40%; }
+.header-divider .left { float:left; }
+.header-divider .right { float:right; }
+.header-divider .left, .header-divider .right {
+    position: relative;
+    top: 19px;
+    border-color: #888;
+}
+#header-date{font-family: 'Jua'; font-size: 17px;}
+
+.user-status {
+    height: -webkit-fill-available;
+    float: left;
+}
+.user-status > span {
+    font-size: 14px;
+    color: #888888;
+    float: left;
+}
+.user-status > span > i {
+    font-size: 20px;
+    color: #7bbfa8;
+    float: left;
+}
+
+.chat-element {
+    padding: 10px 10px 0px 10px;
+    height: 75%;
+    overflow-y: auto;
+    word-break: break-all;
+}
+
+.divider { width:100%; text-align:center; clear: both; margin-bottom: 5px}
+.divider span { font: 14px sans-serif; font-weight: 600; text-transform: uppercase;}
+.divider hr { margin: 0px; width:40%; }
+.divider .left { float:left; }
+.divider .right { float:right; }
+.divider .left, .divider .right {
+    position: relative;
+    top: 15px;
+    border-color: #888;
+}
+
+.chatting-contents {
+    padding-top: 10px;
+}
+.chatting-text-div { margin-left: 30px; margin-top: 5px; margin-bottom: 5px}
+.chatting-userid {
+    margin: 0px;
+}
+.chatting-profile-img {
+    margin-right: 5px;
+    width: 25px;
+    height: 25px;
+    border-radius: 10px;
+    float: left;
+}
+.chatting-userid {
+    font-size: 15px;
+    font-weight: 500;
+}
+.chatting-time {
+    color: #848080;
+    font-size: 10px;
+    font-weight: 600;
+    padding-left: 10px;
+    
+}
+.chat-inputbox-div {
+    height: 10%;
+}
+.chat-inputbox-bg {
+    padding: 10px 10px 0px 10px;
+    height: 100%;
+    width: 100%;
+}
+.chat-textbox {
+    padding: 10px 5px 10px 5px;
+    height: auto;
+    max-height: 105px;
+    width: 100%;
+    border: 3px solid #888888;
+    border-radius: 5px;
+    overflow-y: auto;
+}
+#chat-textbox-icon { 
+	text-align: center;
+    position: relative;
+    top: -30px;
+    left: -30px;
+}
+#chat-textbox-icon > i {
+    color: #888888;
+    float: right;
+}
+.chat-textbox #chat-textbox-text { width: 92%; height: 100%; float: left; }
+.chat-textbox #chat-textbox-text:focus { outline: none; }
+.chat-textbox #chat-textbox-icon {
+    margin-top: 2px;
+    width: 8%;
+    float:right
+}
+.chat-textbox::-webkit-scrollbar{width: 5px;}
+.chat-textbox::-webkit-scrollbar-track {background-color:#fff0;}
+.chat-textbox::-webkit-scrollbar-thumb {background-color:#ddd; border-radius: 5px;}
+.chat-textbox::-webkit-scrollbar-thumb:hover {background: #888;}
+.chat-textbox::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
+    width: 1px;
+    height: 1px;
+    background: #fff0;
+}
+/* group-chart CSS END  */
+
+
+/* group-category CSS START */
+a{
+	text-decoration: none;
+	color: #000;
+}
+a:hover,
+a:focus,
+a:active {
+	text-decoration: none;
+}
+
+.jstree-from::-webkit-scrollbar{width: 10px; height: 8px;}
+.jstree-from::-webkit-scrollbar-track {background-color:#fff0;}
+.jstree-from::-webkit-scrollbar-thumb {background-color:#7bbfa8; border-radius: 10px;}
+.jstree-from::-webkit-scrollbar-thumb:hover {background: #466b5e;}
+.jstree-from::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
+    width: 5px;
+    height: 5px;
+    background: #fff0;
+}
+
+.group-category {
+    height: 700px;
+    width: 32%;
+    padding: 5px;
+    background-color: #fff0;
+}
+
+.group-category-div {
+    height: 100%;
+    border: 1px solid #8aa4af;
+    border-radius: 15px 15px 15px 15px;
+    box-shadow: 5px 6px 10px 3px;
+    background-color: #fff;
+}
+
+.group-category-header {
+	font-family: 'Jua';
+    padding: 10px;
+    min-height: 45px;
+    max-height: 45px;
+    border-bottom: 1px solid #888;
+    border-radius: 13px 13px 0px 0px;
+    background-color: #7bbfa8;
+}
+
+.group-category-header > span{
+    font-size: 20px;
+    font-weight: 500;
+    float: left;
+    color: #fff;
+}
+
+.col-sm-4.group-category {
+    padding-left: 0px;
+    padding-right: 0px;
+    height: 100%;
+}
+
+.jstree-from {
+    padding: 10px 0px 10px 0px;
+    height: 75%;
+    max-height: 644px;
+    min-height: 644px;
+    overflow-y: auto;
+}
+/* group-category CSS END */
+
+/* Team Header Notice dropdown > li CSS */
+.dropdown-menu > li{
+    padding: 5px 10px 5px 10px;
+    background-color: #fff;
+}
+
+/* team CSS END */
+
+/* jstree모달*/
+.indishare-url{
+	margin-left: 10px;
+	border : none;
+	border-bottom: 1px solid #000;
+	color: #000;
+	width: 90%;
+}
+.completed-modal-from { 
+	color: #dc3500; 
+	font-size : 15px;
+}
+.completed-modal-dropdown { 
+	float: left;
+	background-color: #fff;
+	color: #081971;
+	display: block;
+ }
+
+.completed-modal-to { 
+	float: left; 
+	margin-right: 10px;
+	color: #081971; 
+	font-size : 15px;
+}
+
+.modal-header {
+    padding: 15px 15px 10px 15px;
+    border-bottom: 2px solid #7bbfa8;
+}
+.modal-body{
+	padding-top: 0px;
+}

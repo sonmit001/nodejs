@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="site.book.team.dao.TeamDAO">
+	
+	<!-- 희준 -->
+	<select id="socialGroupList" resultType="site.book.team.dto.S_TeamDTO">
+		SELECT t.GID, t.GNAME, u.NNAME, t.HTAG, t.REGDATE, t.DUEDATE as DUEDATE
+		, t.VIEW FROM TEAM t JOIN G_MEMBER gm ON t.GID = gm.GID JOIN USER u ON gm.UID = u.UID 
+		WHERE t.HTAG IS NOT NULL AND gm.GRID = 1
+	</select>
+	
+	<delete id="deleteSocialGroup">
+		DELETE FROM TEAM WHERE GID = #{gid} AND HTAG IS NOT NULL
+	</delete>
+	
+	<select id="selectGroupList" resultType="site.book.team.dto.TeamDTO">
+		select GID, GNAME, HTAG, REGDATE, DUEDATE from TEAM
+	</select>
+	
+	<delete id="deleteGroup">
+		DELETE FROM TEAM WHERE GID = #{gid}
+	</delete>
+	
+	<insert id="insertGroup">
+		INSERT INTO TEAM(GNAME, REGDATE) VALUES(#{gname}, sysdate())
+	</insert>
+	
+	<select id="selectLastGroupID" resultType="Integer">
+		SELECT Max(GID) FROM TEAM
+	</select>
+	
+	<update id="completedGroup">
+		update TEAM set HTAG = #{htag}, DUEDATE = sysdate() where gid = #{gid}
+	</update>
+	
+	<select id="getGroupMember" resultType="site.book.team.dto.G_AlarmDTO">
+		select (select #{fromid} from DUAL) as FROMID, UID as toid, GID 
+		from G_MEMBER
+		where GID=#{gid};
+	</select>
+	
+	<insert id="sendCompletedMemo" parameterType="java.util.List">
+		INSERT INTO G_ALARM(FROMID, TOID, GID, GAID, SENDDATE) 
+		VALUES
+		<foreach collection="list" item="element" separator=",">
+		( #{element.fromid}, #{element.toid}, #{element.gid}, 2, sysdate() )
+		</foreach>
+	</insert>
+	
+	<select id="selectGroup" resultType="site.book.team.dto.TeamDTO">
+		SELECT GID, GNAME, HTAG, REGDATE, DUEDATE FROM TEAM WHERE gid = #{gid}
+	</select>
+	
+	<!-- 명수 -->
+	<select id="getCompletedTeamList" resultType="site.book.team.dto.TeamDTO">
+		SELECT * FROM TEAM t JOIN G_MEMBER gm ON t.gid = gm.gid WHERE UID = #{0} AND HTAG IS NOT NULL
+	</select>
+	
+	<select id="getTeamList" resultType="site.book.team.dto.TeamDTO">
+		SELECT T.GID, T.GNAME, T.HTAG, T.REGDATE, T.DUEDATE, GM.UID, GM.CCOUNT, GM.GRID FROM TEAM T JOIN G_MEMBER GM ON T.GID = GM.GID WHERE UID = #{uid} AND HTAG IS NULL
+	</select>
+	
+	<delete id="deleteCompletedTeam">
+		DELETE FROM G_MEMBER WHERE UID = #{0}
+	</delete>
+	
+	<update id="updateViewCount">
+		update TEAM set view = view + 1 where GID = #{gid}
+	</update>
+	
+</mapper>

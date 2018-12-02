@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/security 
+						http://www.springframework.org/schema/security/spring-security.xsd">
+
+<security:http>
+	<security:csrf disabled="true" />
+	
+	<!-- 로그인 페이지 / 폼에서 전송할 URL값 / 로그인 파라메터 변경 / 로그인 성공 핸들러 / 로그인 실패 핸들러 -->
+	<security:form-login login-page="/joinus/login.do"
+						 login-processing-url="/security/login"
+						 username-parameter="uid"
+   						 password-parameter="pwd"
+   						 authentication-success-handler-ref="loginSuccessHandler"
+   						 authentication-failure-handler-ref="loginFailureHandler" /><!-- default-target-url="/index.do" -->
+   						 
+	<security:logout logout-url="/security/logout" 
+					 invalidate-session="true" 
+					 logout-success-url="/" />
+	
+	
+	<security:intercept-url pattern="/social/**" access="!hasRole('ROLE_ADMIN') and request.session.getAttribute('info_userid') != null" />
+	<security:intercept-url pattern="/team/**" access="!hasRole('ROLE_ADMIN') and request.session.getAttribute('info_userid') != null" />
+	<security:intercept-url pattern="/user/**" access="!hasRole('ROLE_ADMIN') and request.session.getAttribute('info_userid') != null" />
+	<security:intercept-url pattern="/myinfo.do" access="hasRole('ROLE_USER')" />
+	<security:intercept-url pattern="/" access="!hasRole('ROLE_ADMIN')" />
+	<security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
+	
+	<security:session-management invalid-session-url="/" session-fixation-protection="migrateSession">
+		<security:concurrency-control max-sessions="1" error-if-maximum-exceeded="true"/>
+	</security:session-management>
+</security:http>
+
+<security:authentication-manager>
+	<security:authentication-provider>
+		<security:jdbc-user-service 
+			authorities-by-username-query="SELECT UID as USERID, RNAME FROM U_ROLE ur JOIN ROLE r ON ur.RID = r.RID WHERE ur.UID = ?"
+			users-by-username-query="SELECT UID AS userid, PWD AS password, ENABLED AS enabled FROM USER WHERE uid = ?"
+			data-source-ref="driverManagerDataSource" 
+		/><!-- db연결 -->
+		<security:password-encoder ref="bCryptPasswordEncoder" />
+	</security:authentication-provider>
+</security:authentication-manager>
+
+<!-- 로그인 처리 핸들러 빈 -->
+<bean id="loginSuccessHandler" class="site.book.main.handler.LoginSuccessHandler"></bean>
+<bean id="loginFailureHandler" class="site.book.main.handler.LoginFailHandler"></bean>
+
+</beans>

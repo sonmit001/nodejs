@@ -1,0 +1,117 @@
+/* 영어 폰트*/
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+/* 한글 폰트*/
+@import url('https://fonts.googleapis.com/css?family=Jua');
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+body{ height: 91%; }
+#main{ height: 100%; }
+.userinfo{
+    font-family: 'Lato','Noto Sans KR', 'Spoqa Han Sans';
+    height: 100%;
+    font-size : 15px;
+    padding-top: 100px;
+    padding-bottom: 69px;
+}
+
+.userinfo .form{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.userinfo .form-control{
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.09);
+    box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.09) inset;
+    color: #FFFFFF;
+}
+.userinfo .form-control:hover{
+    background-color: rgba(0,0,0,.14);
+}
+.userinfo .form-control:focus{
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.04) inset;
+    background-color: rgba(0,0,0,0.18);
+    color: #666666;
+}
+
+/* Full-width input fields */
+.userinfo input[type="text"], .userinfo input[type="password"] {
+    border-radius: 3px;
+    border: none;
+    color: #333333;
+    font-size: 15px;
+    height: 40px;
+    padding: 13px 12px;
+}
+
+.userinfo .currentProfileImg{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Overwrite default styles of hr */
+.userinfo hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+.userinfo .confirm{
+    font-family: 'Lato','Noto Sans KR', 'Spoqa Han Sans';
+    font-size: 18px;
+    background-color: #2ecc71;
+    color: white;
+    padding: 5px 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 1px solid #fff;
+    cursor: pointer;
+    opacity: 0.9;
+}
+.userinfo .confirm:hover {
+    opacity: 1;
+    background-color: #fff;
+    color: #7bbfa8;
+    border : 1px solid #7bbfa8;
+}
+
+.userinfo .cancel{
+    font-family: 'Lato','Noto Sans KR', 'Spoqa Han Sans';
+    font-size: 18px;
+    background-color: #e42911;
+    color: #fff;
+    padding: 5px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 1px solid #fff;
+}
+
+.userinfo .cancel:hover{
+    opacity: 1;
+    background-color: #fff;
+    color: #ff5757;
+    border: 1px solid #ff5757;
+}
+
+/* Add a blue text color to links */
+.userinfo a {
+    color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.userinfo .signin {
+    background-color: #f1f1f1;
+    text-align: center;
+}
+
+/* To footer space */
+.to-footer-space {
+	padding-bottom: 479px;
+}

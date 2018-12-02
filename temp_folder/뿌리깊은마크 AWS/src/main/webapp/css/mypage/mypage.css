@@ -1,0 +1,293 @@
+/* 영역별 Title 폰트 */
+@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans');
+@import url('https://fonts.googleapis.com/css?family=Poor+Story');
+@import url('https://fonts.googleapis.com/css?family=Jua');
+/* 영어 폰트 */
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+/* 한글 폰트 */
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+#main{ height: 100%; }
+
+a:hover{text-decoration: none; }
+.material-icons.md-18 { float: left; font-size: 18px; }
+.material-icons.md-24 { float: left; font-size: 24px; }
+.material-icons.md-32 { float: left; font-size: 32px; margin-right: 7px; }
+.material-icons.md-36 { float: left; font-size: 36px; }
+.material-icons.md-48 { float: left;font-size: 48px; }
+
+
+.modal { z-index: -10; }
+.modal-open .modal { z-index: 1050; }
+#linkAdd_btn {
+	perspective-origin: center center;
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+.jstree-modal-center{
+	 margin: 0;
+    position: absolute;
+    top: 30%;
+    left: 30%;
+}
+#completedGroupModal {
+	perspective-origin: center center;
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+#form-to-mybookmark-left { padding-top: 10px; }
+.main-modal-controller { display: table-row; width: 100%; }
+.main-modal-center { display: table-cell; vertical-align: middle; padding-bottom: 50px; }
+
+#jstree-to-right {
+	clear: both;
+}
+.bg-img {
+  position: fixed;
+
+}
+.bg-right-top {
+  top: 200px;
+  left: 1350px;
+  width: 400px;
+}
+.bg-left-bottom {
+  top: 660px;
+  right: 1380px;
+  width: 400px;
+}
+
+#my-main-div {
+  padding-top: 150px;
+  padding-bottom: 10px;
+}
+.pull-left {
+  position: relative;
+  right: 20px;
+}
+.loading_text{
+	font-size: 15px;
+	position: relative;
+	left: 10px;
+	right: 20px;
+	font-family: 'Jua';
+}
+.spring {
+  position: relative;
+  z-index: 1;
+}
+.left-top {
+  float: right;
+  left: 10px;
+  top: 25px;
+}
+.right-top {
+  float: left;
+  right: 10px;
+  top: 27px;
+}
+.left-bottom {
+  float: right;
+  left: 39px;
+  top: 486px;
+}
+.right-bottom {
+  float: left;
+  right: 34px;
+  top: 488px;
+}
+
+.my-row-bg {
+  padding: 25px 0px 25px 30px;
+  border-radius: 20px;
+}
+
+.mydiv-height {
+  padding: 0;
+  height: 757px;
+}
+
+.mypage-title {
+  font-size: 23px;
+  font-family: 'Jua';
+}
+.heading {
+  color: #fff;
+  background-color: #7bbfa8;
+  border-color: #7bbfa8;
+  padding: 5px 15px;
+  border-bottom: 1px solid transparent;
+}
+
+.heading-post-top {
+  color: #fff;
+  background-color: #d2c779;
+  border-color: #d2c779;
+  padding: 5px 15px;
+  border-bottom: 1px solid transparent;
+}
+
+.heading-post-bottom {
+  color: #fff;
+  background-color: #d06e35;
+  border-color: #d06e35;
+  padding: 5px 15px;
+  border-bottom: 1px solid transparent;
+}
+
+/* My Bookmark Note 마이북마크 노트 부분 CSS */
+.my-boomark-btn {
+/* 	-webkit-transition: all 500ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-moz-transition: all 500ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-ms-transition: all 500ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-o-transition: all 500ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	transition: all 500ms cubic-bezier(0.390, 0.500, 0.150, 1.360); */
+  margin-top: 2px;
+  padding: 2px 20px 2px 20px;
+  color: #fff;
+  border-color: #fff;
+  background-color: #fff0;
+  border: 2px solid #fff;
+  font-weight: 700;
+  float: right;
+}
+.my-boomark-btn:hover {
+  color: rgba(255, 255, 255, 0.85);
+  border: 2px solid #7bbfa8;
+	box-shadow: #222d32 0 0px 0px 40px inset;
+}
+
+.my-bookmark-list {
+  border-top-left-radius: 10px;
+}
+.my-bookmark-print-list {
+  border-top-right-radius: 10px;
+}
+.my-bookmark-div {
+  margin-left: 25px;
+  background-color: #fff;
+  border: 1px solid;
+  border-color: #000;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  box-shadow: -3px 3px 0px 0px gray;
+}
+.my-bookmark-print-div {
+  margin-left: 10px;
+  background-color: #fff;
+  border: 1px solid;
+  border-right-style: double;
+  border-color: #000;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: 3px 3px 0px 0px gray;
+}
+
+/* My Group Post 마이 그룹 포스트잇 부분 CSS */
+.group-list-div {
+  padding: 0;
+  margin: 0;
+  height: 67%;
+  box-shadow: 10px 10px 20px 0px;
+  border-bottom-left-radius: 0px;
+}
+.group-list-panel {
+  padding-bottom: 0px;
+  margin: 0 0 10px 20px;
+  border-color: #000;
+  border: 1px solid;
+  overflow: hidden;
+}
+
+.completed-group-list-div {
+  padding: 0;
+  margin: 0 0 0 20px;
+  height: 30%;
+  box-shadow: 10px 10px 20px 0px;
+  border-bottom-left-radius: 0px;
+}
+.group-completed-list-panel {
+  border-color: #000;
+  border: 1px solid;
+}
+
+.my-group-list {
+  padding: 0;
+  cursor: pointer;
+}
+
+.group-list-list {
+  padding: 0;
+  margin: 0;
+}
+
+.trash { color:rgb(209, 91, 71); }
+.completed { color:rgb(209, 91, 71); }
+.plus { color:rgb(209, 91, 71); }
+.flag { color:rgb(248, 148, 6); }
+.panel-body { padding:0px; overflow-y: hidden; }
+.panel-body-scroll { padding:0px; height: 80%; overflow-y: scroll; }
+.panel .glyphicon,.list-group-item .glyphicon { margin-right:5px; cursor: pointer;}
+.panel-body .radio, .checkbox { display:inline-block;margin:0px; }
+.panel-body input[type=checkbox]:checked + label { text-decoration: line-through;color: rgb(128, 144, 160); }
+.list-group-item:hover, a.list-group-item:focus {text-decoration: none; background-color: #dddddd;}
+.list-group { margin-bottom:0px; }
+
+.trash span, .completed span {
+	cursor : pointer;
+}
+
+/* jstree 길이 넘어가면 ... 표시 */
+.my-bookmark-print-div .jstree-anchor{
+    overflow:hidden;
+	white-space:nowrap;
+	max-width: 80%;
+}
+
+.jstree-container-ul.jstree-children.jstree-no-dots.jstree-contextmenu.jstree-wholerow-ul{
+	max-width: 100%;
+}
+
+/* confirm 버튼 색상 지정 */
+.jconfirm.jconfirm-light .jconfirm-box .jconfirm-buttons button.btn-default {
+	color: #fff;
+	background: #5cb85c;
+}
+
+.jconfirm.jconfirm-light .jconfirm-box .jconfirm-buttons button.btn-default:hover {
+	color: #fff;
+	background: #5cb85c;
+}
+/*modal*/
+.modal-body {
+	padding-top:0;
+}
+.modal-footer {
+	clear: both;
+}
+
+/* jstree scrolling */
+.jstree-container-ul {
+	overflow: auto;
+    max-height: 702px;
+    min-height: 702px;
+}
+
+.jstree-container-ul::-webkit-scrollbar{width: 10px; height: 10px;}
+.jstree-container-ul::-webkit-scrollbar-track {background-color:#fff0;}
+.jstree-container-ul::-webkit-scrollbar-thumb {background-color:#ccc; border-radius: 10px;}
+.jstree-container-ul::-webkit-scrollbar-thumb:hover {background: #b9b9b9;}
+.jstree-container-ul::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
+    width: 5px;
+    height: 5px;
+    background-color: #fff0;
+}
+.completed-group .jstree-container-ul {
+	overflow: auto;
+    max-height: 300px;
+    min-height: 300px;
+
+}

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="site.book.user.dao.UserDAO">
+	<!-- 태웅 -->
+	<select id="checkUserID" resultType="Integer">
+		SELECT Count(*) FROM USER WHERE UID=#{uid}
+	</select>
+	
+	<select id="checkUserNickname" resultType="Integer">
+		SELECT Count(*) FROM USER WHERE NNAME=#{nname}
+	</select>
+	
+	<insert id="insertNewUser" statementType="CALLABLE" parameterType="HashMap">
+	<!-- INSERT INTO USER(UID, NNAME, PWD, REGDATE, PROFILE) 
+	VALUES(#{uid}, #{nname}, #{pwd}, sysdate(), #{profile}) -->
+		{ call insert_user_and_role_re
+			(
+                #{uid},
+                #{nname},
+                #{pwd},
+                #{oauth_code}
+            )
+        }
+	</insert>
+	
+	<insert id="insertAuthCode" parameterType="site.book.user.dto.EmailAuthDTO">
+		INSERT INTO U_AUTHCODE(AUTHCODE, UID, SENDDATE) VALUES(#{authcode}, #{uid}, sysdate())
+	</insert>
+	
+	<select id="checkAuthCode" resultType="Integer">
+		SELECT Count(*) FROM U_AUTHCODE WHERE UID=#{uid} and AUTHCODE=#{authcode}
+	</select>
+	
+	<select id="getUser" resultType="site.book.user.dto.UserDTO">
+        SELECT UID, NNAME, PWD, ENABLED, REGDATE, PROFILE FROM `USER` WHERE UID=#{uid}
+    </select>
+    
+    <update id="editUser">
+    	<choose>
+    		<when test="profile == null">
+    			UPDATE USER SET PWD=#{pwd} WHERE UID=#{uid}
+    		</when>
+    		<otherwise>
+    			UPDATE USER SET PWD=#{pwd}, PROFILE=#{profile} WHERE UID=#{uid}
+    		</otherwise>
+    	</choose>
+    </update>
+    
+    <delete id="deleteUser">
+        DELETE FROM `USER` WHERE UID=#{uid}
+    </delete>
+    
+    <update id="updatePwd">
+        UPDATE USER SET PWD=#{pwd} WHERE UID=#{uid}
+    </update>
+    
+    <select id="getAllUserNname" resultType="java.util.List">
+    	SELECT NNAME FROM USER WHERE NNAME like concat('%', #{nname}, '%')
+    </select>
+	
+	<!-- 희준 -->
+	<select id="allUser" resultType="Integer">
+		SELECT Count(*) FROM USER
+	</select>
+	
+	<select id="newUser" resultType="java.util.HashMap">
+		SELECT DATE_FORMAT(regdate,'%Y-%m-%d') d, COUNT(*) as c FROM `USER` GROUP BY d
+	</select>
+	
+	<update id="blacklist">
+		UPDATE USER SET enabled = 0 WHERE uid=#{uid}
+	</update>
+	
+	<select id="getUserList" resultType="site.book.user.dto.UserDTO">
+		SELECT UID, NNAME, PWD, ENABLED, REGDATE, PROFILE FROM `USER` WHERE Enabled = 1 and NNAME != '관리자'
+	</select>
+	
+	<delete id="deleteUserBook">
+		DELETE FROM U_BOOK WHERE uid = #{uid}
+	</delete>
+
+	<!-- 명수 -->
+	
+</mapper>

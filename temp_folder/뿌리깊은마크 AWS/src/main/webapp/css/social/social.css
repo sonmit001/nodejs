@@ -1,0 +1,296 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+/* 헤더 로고 폰트 */
+@import url('https://fonts.googleapis.com/css?family=Gugi');
+/* 한글 폰트*/
+@import url('https://fonts.googleapis.com/css?family=Jua');
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+/* Social Page CSS START */
+.ranking-div{
+    padding-top: 150px;
+    text-align: left;
+    font-family: 'Lato','Noto Sans KR', 'Spoqa Han Sans';
+    padding-left:30px;
+    padding-right:30px;
+}
+
+.ranktitle{
+    font-size: 25px;
+    color: #2c3e50;
+}
+
+/* RANK, Share Img START */
+.rankimg{
+    width:55px;
+    height:35px;
+    padding-left:10px;
+    padding-right:10px;
+}
+.rankimg2{
+    width:45px;
+    height:35px;
+    padding-left:10px;
+    padding-right:10px;
+    margin-right:10px;
+}
+
+.shareimg{
+    width: 35px;
+    height: 35px;
+   margin-right: 5px;
+}
+/* RANK, Share Img END */
+
+.bookmark-share-div{
+    font-family: 'Lato','Noto Sans KR', 'Spoqa Han Sans';
+    padding-top: 30px;
+    padding-left:30px;
+    padding-right:30px;
+    font-size:15px;
+}
+
+.slideimg{
+    /* background: url(../../images/social/1196.png) 0 85% repeat-x; */
+    height: 85px;
+}
+
+/* .slideimg::after {
+  display: block;
+  position: relative;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, #fff 100%);
+  height: 85px;
+  width: 100%;
+  content: '';
+}
+ */
+.bg-bottom{
+    position: absolute;
+    float: left;
+    bottom: -150px;
+    width: 350px;
+    height: 400px;
+}
+/* 북마크 공유 div 가져가기 icon START */
+table .fa {
+   display: none;
+   padding-top:5px;
+}
+       
+table tr:hover .fa {
+   display: block;
+   cursor:pointer;
+}
+
+table tr td a{
+	cursor: pointer;
+}
+/* 북마크 공유 div 가져가기 icon END */
+
+/* Table CSS START */
+table thead tr th.table-site,
+table thead tr td.table-site,
+table thead tr th.table-groupname,
+table thead tr td.table-groupname{
+	width: 180px;
+}
+
+table thead tr td.table-write{
+	width: 90px;
+}
+
+table thead tr th.table-date,
+table tbody tr td.table-date{
+    width: 17%;
+    overflow: hidden;
+    text-overflow: clip !important;
+}
+
+table thead tr th.table-click,
+table tbody tr td.table-click{
+    width:60px;
+}
+
+table thead tr th.table-tag,
+table tbody tr td.table-tag{
+    display: none;
+}
+table thead tr th.table-icon,
+table thead tr td.table-icon{
+	width: 28px;
+}
+
+.panel-body.rank-table tr .rank{
+    font-size:11px;
+}
+
+/* 테이블 정렬 icon START */
+
+
+table.dataTable thead .sorting_asc:after {
+    color: #d9534f;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\F0DD"
+}
+
+table.dataTable thead .sorting_desc:after {
+    color: #d9534f;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\F0DE"
+}
+/* 테이블 정렬 icon END */
+
+
+/* DATA TABLE CONTENT DISPLAY START */
+div.dataTables_info {
+    display: none;
+}
+/* DATA TABLE CONTENT DISPLAY END */
+
+.panel-body{
+    box-shadow: 6px 7px 25px 10px #8aa4af;
+    border-radius: 25px;
+    background-color: #fff;
+}
+
+.panel-body.rank-table tr,
+.panel-body.rank-table td{
+    border-bottom: 1px solid #fff;
+    font-size: 17px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+.panel-body thead tr{
+    background-color: #7bbfa8;
+    text-align: center;
+}
+.panel-body thead tr th{
+    text-align: center;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.panel-body tbody tr{
+    background-color: #eee;
+    text-align: center;
+}
+/* Table CSS END */
+
+.share-head{
+    font-size: 25px;
+    font-weight: 500;
+    color: #2c3e50;
+    
+}
+#from-text { color: #000; }
+html {
+    height: 100%;
+}
+
+a:hover {
+    outline: none;
+    text-decoration: none;
+    color: #35b0ab;
+}
+a:active,
+a:focus {
+    outline: none;
+    text-decoration: none;
+    outline-offset: 0;
+}
+
+a {
+    font-family: 'Lato','Noto Sans KR', 'Spoqa Han Sans';
+    color: #000;
+    -webkit-transition: 300ms;
+    -moz-transition: 300ms;
+    -o-transition: 300ms;
+    transition: 300ms;
+}
+
+table {
+    width: 100%;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Lato','Noto Sans KR', 'Spoqa Han Sans';
+    font-weight: 300;
+}
+.container .top5-table>tbody>tr>td {
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}
+/* 소셜 사이트명 길이 넘어가면 ... 표시 */
+.container .table>tbody>tr>td {
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 34px;
+	
+}
+
+/* 소셜 버튼 css */
+.pagination {
+        float: right;
+        margin: 0 0 5px;
+        /*margin: 10px 0 5px;*/
+    }
+
+.pagination li a {
+    border: none;
+    font-size: 13px;
+    min-width: 30px;
+    min-height: 30px;
+    padding: 0 10px;
+    color: #999;
+    margin: 0 2px;
+    line-height: 30px;
+    border-radius: 30px !important;
+    text-align: center;
+
+}
+
+.pagination li a:hover {
+    color: #fff;
+    background: #999;
+}
+
+.pagination li.active a,
+.pagination li.active a:active,
+.pagination li.active a:focus,
+.pagination li.active a:visited,
+.pagination li.active a:visited:hover {
+    background: #7bab94;
+}
+
+/* Modal scrolling */
+.jstree-container-ul {
+	overflow: auto;
+    max-height: 300px;
+    min-height: 300px;
+}
+
+.jstree-container-ul::-webkit-scrollbar{width: 5px; height: 10px;}
+.jstree-container-ul::-webkit-scrollbar-track {background-color:#fff0;}
+.jstree-container-ul::-webkit-scrollbar-thumb {background-color:#ccc; border-radius: 10px;}
+.jstree-container-ul::-webkit-scrollbar-thumb:hover {background: #b9b9b9;}
+.jstree-container-ul::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
+    width: 5px;
+    height: 5px;
+    background-color: #fff0;
+}
+
+
+/* ellipsis
+.jstree-anchor{
+    overflow:hidden;
+	white-space:nowrap;
+	max-width: 80%;
+}
+ */
+ 
+ 
+/* Social Page CSS END */
