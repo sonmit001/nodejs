@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="site.book.team.dao.G_BookDAO">
+	<select id="numOfBookByDate" resultType="java.util.HashMap">
+		SELECT DATE_FORMAT(regdate,'%Y-%m-%d') d, COUNT(*) as c FROM G_BOOK GROUP BY d
+	</select>
+	
+	<delete id="deleteGroupBook">
+		DELETE FROM G_BOOK WHERE uid = #{uid} AND URL IS NOT NULL
+	</delete>
+	
+
+	<select id="selectGroupViews" resultType="Integer">
+		select COALESCE(SUM(VIEW),0) from TEAM t join G_BOOK gb on t.gid = gb.gid where t.gid = #{gid}
+	</select>
+
+	<select id="getCompletedTeamBookmark" resultType="site.book.team.dto.G_BookDTO">
+		SELECT * FROM G_BOOK WHERE GID=#{gid}
+	</select>
+	
+	<!-- 태응이 땅 -->
+	<select id="getGroupCategoryList" resultType="site.book.team.dto.G_BookDTO">
+		SELECT * FROM G_BOOK WHERE GID=#{gid} AND URL IS NULL
+	</select>
+	
+	<insert id="insertRootFolder">
+		INSERT INTO G_BOOK (URLNAME, REGDATE, GID, UID)
+		VALUES ('ROOT', SYSDATE(), #{0}, #{1})
+	</insert>
+	
+	<select id="getMaxGBID" resultType="int">
+		select max(GBID) +1 from G_BOOK
+	</select>
+	
+	<insert id="insertGroupBookmark" parameterType="site.book.team.dto.G_BookDTO">
+	<choose>
+		<when test="abid != null">
+			INSERT INTO G_BOOK (URL, URLNAME, REGDATE, GID, PID, ABID, UID)
+			VALUES (#{url}, #{urlname}, SYSDATE(), #{gid}, #{pid}, #{abid}, #{uid})
+		</when>
+		<otherwise>
+			INSERT INTO G_BOOK (URL, URLNAME, REGDATE, GID, PID, UID)
+			VALUES (#{url}, #{urlname}, SYSDATE(), #{gid}, #{pid}, #{uid})
+		</otherwise>
+	</choose>
+	</insert>
+	
+	<!-- 명수 -->
+	<select id="getTeamJstree" resultType="site.book.team.dto.G_BookDTO">
+		SELECT * FROM G_BOOK WHERE GID=#{gid}
+	</select>
+	
+	<select id="getCurrentGBID" resultType="int">
+		SELECT max(GBID) FROM G_BOOK
+	</select>
+	
+	<delete id="deleteTeamNode">
+		DELETE FROM G_BOOK WHERE GBID=#{gibd}
+	</delete>
+	
+	<update id="updateTeamNodeText" parameterType="hashMap">
+		UPDATE G_BOOK SET URLNAME = #{text} WHERE GBID= #{gbid}
+	</update>
+	
+	<insert id="addTeamFolderOrUrl" parameterType="site.book.team.dto.G_BookDTO">
+		<choose>
+			<when test="url !=null">
+				INSERT INTO G_BOOK(URL,URLNAME ,REGDATE,GID,PID,UID)
+					VALUES(#{url},#{urlname},SYSDATE(),#{gid},#{pid},#{uid})
+			</when>
+			<otherwise>
+				INSERT INTO G_BOOK(REGDATE,GID,PID,UID)
+					VALUES(SYSDATE(),#{gid},#{pid},#{uid})
+			</otherwise>
+		</choose>
+	</insert>
+	
+	<update id="dropTeamNode">
+		UPDATE G_BOOK SET PID = #{dropnode} WHERE GBID = #{dragnode}
+	</update>
+	
+	<update id="editTeamUrl" parameterType="hashMap">
+		UPDATE G_BOOK SET URL= #{url} WHERE GBID=#{gbid}
+	</update>
+	
+	<select id="getMyCategoryList" resultType="site.book.user.dto.U_BookDTO">
+		SELECT * FROM U_BOOK WHERE UID=#{uid}
+	</select>
+</mapper>

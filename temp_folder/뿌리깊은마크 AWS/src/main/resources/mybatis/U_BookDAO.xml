@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="site.book.user.dao.U_BookDAO">
+	<!-- 태웅 -->
+	<!-- From Admin Bookmark to My Bookmark -->
+	<insert id="insertToMyBookmark">
+		<if test="abid != 0 or pid != 0">
+		INSERT INTO U_BOOK(URL, URLNAME, REGDATE, UID, PID, ABID) VALUES(#{url}, #{urlname}, SYSDATE(), #{uid}, #{pid}, #{abid})
+		</if>
+	</insert>
+	
+	<!-- 희준 -->
+	<select id="numOfBookByDate" resultType="java.util.HashMap">
+		SELECT DATE_FORMAT(regdate,'%Y-%m-%d') d, COUNT(*) as c FROM U_BOOK GROUP BY d
+	</select>
+	
+	<select id="socialBookmarkList" resultType="site.book.user.dto.S_U_BookDTO">
+		SELECT ub.UBID, ub.URL, ub.UID, u.NNAME, ub.SNAME, ub.VIEW, ub.HTAG, ub.SDATE as SDATE FROM U_BOOK ub JOIN USER u ON ub.HTAG is not null and ub.UID = u.UID
+	</select>
+	
+	<delete id="deleteSocialBookmark">
+		DELETE FROM U_BOOK WHERE UBID = #{ubid} AND HTAG IS NOT NULL
+	</delete>
+	
+	<insert id="addUrlNotShare">
+		INSERT INTO U_BOOK(URL, URLNAME, REGDATE, UID, PID) VALUES(#{url}, #{urlname}, SYSDATE(), #{uid}, #{pid})
+	</insert>
+	
+	<!-- 명수 -->
+	<select id="getCategoryList" resultType="site.book.user.dto.U_BookDTO">
+		SELECT * FROM U_BOOK WHERE UID=#{uid}  AND URL IS NULL  
+	</select>
+
+	<select id="getUrl" resultType="site.book.user.dto.U_BookDTO">
+		SELECT * FROM U_BOOK WHERE PID=#{0} AND URL IS NOT NULL
+	</select>
+	
+	<insert id="insertRootFolder">
+		INSERT INTO U_BOOK (URLNAME,REGDATE,VIEW,UID)
+			VALUES ('카테고리 시작',SYSDATE(), 0, #{uid})
+	</insert>
+	
+	<select id="getMaxId" resultType="int">
+		select from
+	</select>
+	
+	<update id="updateNodeText" parameterType="hashMap">
+		UPDATE U_BOOK SET URLNAME = #{text} WHERE UBID= #{id}
+	</update>
+	
+	<insert id="addFolderOrUrl" parameterType="site.book.user.dto.U_BookDTO">
+	
+		<if test="abid == 0 and htag !=null">
+			INSERT INTO U_BOOK(URL,URLNAME,REGDATE,VIEW,UID,PID,SNAME,HTAG,SDATE)
+			VALUES(#{url},#{urlname},SYSDATE(),0,#{uid},#{pid},#{sname},#{htag},SYSDATE())
+		</if>
+		<if test="abid == 0 and htag == null">
+		INSERT INTO U_BOOK(URL,URLNAME,REGDATE,VIEW,UID,PID)
+			VALUES(#{url},#{urlname},SYSDATE(),0,#{uid},#{pid})
+		</if>
+		<if test="abid != 0">
+		INSERT INTO U_BOOK(URL,URLNAME,REGDATE,VIEW,UID,PID,SNAME,HTAG,SDATE,ABID)
+			VALUES(#{url},#{urlname},SYSDATE(),0,#{uid},#{pid},#{sname},#{htag},#{sdate},#{abid})
+		</if>
+	</insert>
+	
+	<delete id="deleteFolderOrUrl">
+		DELETE FROM U_BOOK WHERE UBID=#{0}
+	</delete>
+	
+	<update id="editUrl" parameterType="site.book.user.dto.U_BookDTO">
+		UPDATE U_BOOK SET URL= #{url} WHERE UBID=#{ubid}
+	</update>
+	
+	<update id="dropNode" parameterType="hashMap">
+		UPDATE U_BOOK SET PID = #{dropnode} WHERE UBID = #{dragnode}
+	</update>
+	
+	<update id="shareUrlEdit" parameterType="site.book.user.dto.U_BookDTO">
+		<choose>
+			<when test="htag !=null">
+				UPDATE U_BOOK SET HTAG= #{htag} , SNAME =#{sname} , SDATE = SYSDATE() WHERE UBID = #{ubid}
+			</when>
+			<otherwise>
+				UPDATE U_BOOK SET HTAG = NULL , SNAME = NULL , SDATE = NULL WHERE UBID = #{ubid}
+			</otherwise>
+		</choose>
+	</update>
+	
+	<insert id="insertUrlFromCompletedGroup" parameterType="java.util.Map">
+		INSERT INTO U_BOOK(URL,URLNAME,REGDATE,VIEW,UID,PID)
+			VALUES
+			<foreach separator="," item="item" collection="list">
+			(#{item.url},#{item.urlname},SYSDATE(),0,#{item.uid},#{item.pid})
+			</foreach>
+	</insert>
+	
+	<update id="updateViewCount">
+		update U_BOOK set view = view + 1 where UBID = #{ubid}
+	</update>
+	
+</mapper>

@@ -24,6 +24,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.social.connect.Connection;
@@ -67,8 +69,7 @@ import site.book.user.service.UserService;
 @Controller
 public class MainController {
 	
-	// 변수 Start
-	
+	private static final Logger logger = LoggerFactory.getLogger("member");
 	// 태웅
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -160,11 +161,9 @@ public class MainController {
 	@RequestMapping(value="/joinus/login.do")
 	public View login(HttpServletRequest request, HttpServletResponse response, 
 			HttpSession session, Model model, UserDTO user) {
-		
+		logger.info("login success or fail : " + request.getAttribute("msg") );
 		// process message from Handler and JSON data response
 		// 로그인 실패: 아이디 또는 비밀번호 잘못 입력
-		System.out.println("log in controller");
-		System.out.println(request.getAttribute("msg"));
 		try {
 			if(request.getAttribute("msg").equals("fail")) {
 				model.addAttribute("login", "fail");
@@ -182,8 +181,10 @@ public class MainController {
 				String role = (String)request.getAttribute("ROLE");
 				if(role.equals("ADMIN")) {
 					model.addAttribute("path", "admin/main.do");
+					logger.info("admin login");
 				}else {
 					model.addAttribute("path", "/");
+					logger.info("user login");
 				}
 				
 				// set info session userid
@@ -192,7 +193,7 @@ public class MainController {
 				session.setAttribute("info_userprofile", user.getProfile());
 			}
 		} catch (Exception e) {
-			/*e.printStackTrace();*/
+			logger.error(e.getMessage(), e);
 		}
 		
 		return jsonview;
@@ -202,7 +203,7 @@ public class MainController {
 	/* 구글 로그인 버튼 클릭시 Google+ API 실행 */
 	@RequestMapping(value="/joinus/googleLogin", method= { RequestMethod.GET, RequestMethod.POST })
 	public View doGoogleSignInActionPage(HttpServletRequest request, Model model) throws Exception{
-		
+		logger.info("google login");
 		/* 구글code 발행 */
 		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
 		  String url = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
@@ -219,7 +220,7 @@ public class MainController {
 								Model model, @RequestParam String code) throws ServletException, IOException {
 		
 		//System.out.println(code);
-		
+		logger.info("googlesignincallback");
 		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
 		AccessGrant accessGrant = oauthOperations.exchangeForAccess(code , googleOAuth2Parameters.getRedirectUri(), null);
 		
@@ -228,7 +229,7 @@ public class MainController {
 		
 		if (expireTime != null && expireTime < System.currentTimeMillis()) {
 			accessToken = accessGrant.getRefreshToken();
-		    System.out.printf("accessToken is expired. refresh token = {}", accessToken);
+		    logger.error("accessToken is expired. refresh token = {}", accessToken);
 		}
 		
 		Connection<Google> connection = googleConnectionFactory.createConnection(accessGrant);
@@ -283,13 +284,14 @@ public class MainController {
 	@RequestMapping(value="/joinus/emailsend.do", method=RequestMethod.POST)
 	public View emailConfirm(HttpServletRequest request, HttpServletResponse response, 
 			EmailAuthDTO auth, Model model) {
-		
-		//System.out.println(auth);
+		logger.info("signup emailsend auth : " + auth);
 		int result = user_service.confirmEmail(auth);
 		if(result > 0) {
 			model.addAttribute("email", "pass");
+			logger.info("signup emailsend success");
 		}else {
 			model.addAttribute("email", "fail");
+			logger.info("signup emailsend fail");
 		}
 		return jsonview;
 	}
@@ -298,8 +300,7 @@ public class MainController {
 	@RequestMapping(value="/joinus/emailauth.do", method=RequestMethod.POST)
 	public View checkAuthcode(HttpServletRequest request, HttpServletResponse response, 
 			EmailAuthDTO auth, Model model) {
-		
-		//System.out.println(auth);
+		logger.info("signup authcheck");
 		int result = user_service.checkAuthcode(auth);
 		if(result > 0) {
 			model.addAttribute("auth", "pass");
@@ -429,19 +430,19 @@ public class MainController {
 	@RequestMapping(value="/findpwd.do", method=RequestMethod.POST)
 	public View findUserPwd(HttpServletRequest request, Model model,
 			EmailAuthDTO authcode, UserDTO user) {
-
-		//System.out.println(authcode);
-		//System.out.println(user);
+		logger.info("temp_password send authcode : " + authcode);
 		int resultAuth = user_service.checkAuthcode(authcode);
 		
 		// 인증코드가 정확하다면,
 		if(resultAuth > 0) {
 			// 회원에게 임시 비밀번호 발급
+			logger.info("send temp_password");
 			user_service.findUserPwd(user);
 			model.addAttribute("result", "success");
 			model.addAttribute("path", "/");
 		}else {
 			model.addAttribute("result", "fail");
+			logger.info("temp_password authcode is wrong ");
 		}
 		return jsonview;
 	}
@@ -476,7 +477,7 @@ public class MainController {
 					url_percent.add(temp);
 				}
 			}catch (Exception e) {
-				// TODO: handle exception
+				logger.error(e.getMessage(), e);
 			}
 			
 			model.addAttribute("suburl", url_percent);
@@ -494,7 +495,7 @@ public class MainController {
 			model.addAttribute("rank", rank);
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage(),e);
 		}
 		return jsonview;
 	}
@@ -574,8 +575,4 @@ public class MainController {
 		return jsonview;
 	}
 	
-	// 명수
-	
-	
-	// 함수 End
 }

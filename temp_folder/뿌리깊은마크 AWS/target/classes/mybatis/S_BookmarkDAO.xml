@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="site.book.social.dao.S_BookmarkDAO">
+
+	<insert id="insertGroupBookmark" parameterType="site.book.team.dto.G_BookDTO">
+		INSERT INTO G_BOOK (URL, URLNAME, REGDATE, GID, PID, UID) 
+		VALUES (#{url}, #{urlname}, SYSDATE(), #{gid}, #{pid}, #{uid})
+	</insert>
+	
+	<insert id="insertGroupBookmarkList" parameterType="java.util.List">
+		INSERT INTO G_BOOK (URL, URLNAME, REGDATE, GID, PID, UID) 
+		VALUES 
+		<foreach collection="list" item="gblist" separator=",">
+		( #{gblist.url}, #{gblist.urlname}, SYSDATE(), #{gblist.gid}, #{gblist.pid}, #{gblist.uid} )
+		</foreach>
+	</insert>
+	
+</mapper>

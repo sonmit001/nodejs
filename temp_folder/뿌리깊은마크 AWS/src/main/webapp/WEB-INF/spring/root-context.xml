@@ -18,7 +18,7 @@
 	<!-- Mybatis 설정 -->
 	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="driverManagerDataSource"></property>
-		<property name="mapperLocations" value="classpath*:site/book/*/mapper/*xml" />
+		<property name="mapperLocations" value="classpath:mybatis/*xml" />
 	</bean>
 	
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">

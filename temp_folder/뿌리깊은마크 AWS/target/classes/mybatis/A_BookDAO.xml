@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="site.book.admin.dao.A_BookDAO">
+	
+	<select id="selectAllBook" resultType="site.book.admin.dto.A_BookDTO">
+		SELECT ABID, URL, URLNAME, VIEW, REGDATE, ACID FROM A_BOOK
+	</select>
+	
+	<select id="selectBook" resultType="site.book.admin.dto.A_BookDTO">
+		SELECT ABID, URL, URLNAME, VIEW, REGDATE, ACID FROM A_BOOK WHERE ABID = #{abid}
+	</select>
+	
+	<insert id="insertBook">
+		INSERT INTO A_BOOK(url, urlname, regdate, acid) VALUES (#{url}, #{urlname}, SYSDATE(), #{acid})
+	</insert>
+	
+	<update id="updateBook">
+		UPDATE A_BOOK SET url=#{url}, urlname=#{urlname}, regdate=SYSDATE(), acid=#{acid} WHERE ABID=#{abid}
+	</update>
+	
+	<delete id="deleteBook">
+		DELETE FROM A_BOOK WHERE ABID = #{abid}
+	</delete>
+	
+	<select id="selectCategoryURL" resultType="site.book.admin.dto.A_BookDTO">
+		SELECT ABID, URL, URLNAME, VIEW, REGDATE, ACID FROM A_BOOK WHERE ACID = #{acid}
+	</select>
+	
+	<select id="getMaxABID" resultType="Integer">
+		select MAX(ABID) from A_BOOK
+	</select>
+	
+	<!-- 2018-06-11(MON): 김태웅 추가 -->
+	<select id="selectAllBookMain" resultType="site.book.admin.dto.A_BookDTO">
+		SELECT ABID, URL, URLNAME, VIEW, DATE_FORMAT(REGDATE,'%Y-%m-%d') as REGDATE, AC.ACID, AC.ACNAME
+		FROM A_BOOK AB
+		JOIN A_CATEGORY AC ON AB.ACID = AC.ACID
+		ORDER BY AC.ACID, AB.VIEW DESC;
+	</select>
+	
+	<update id="clickURL">
+		UPDATE A_BOOK SET VIEW=VIEW+1 where ABID= #{abid}
+	</update>
+</mapper>

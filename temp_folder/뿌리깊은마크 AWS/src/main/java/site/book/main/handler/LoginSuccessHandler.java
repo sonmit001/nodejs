@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -29,7 +31,7 @@ import site.book.user.service.UserService;
 // Spring Security에서 제공해주는 AuthenticationSuccessHandler를 상속 받아 onAuthenticationSuccess method를 오버라이딩
 // LoginSuccessHandler란 로그인 성공시 사용자에게 응답하기 전에 처리되는 Filter의 역할
 public class LoginSuccessHandler implements AuthenticationSuccessHandler {
-	
+	private static final Logger logger = LoggerFactory.getLogger("member");
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
@@ -50,7 +52,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 		}else {
 			request.setAttribute("ROLE", "USER");
 		}
-		
+		logger.info("login success : {}  role : {} " , authentication.getName(), request.getAttribute("ROLE"));
 		// 비동기 처리에 필요한 부분으로 동기가 아닌 해당 주소로 forward 방식을 통해 처리가 가능
 		request.getRequestDispatcher("/joinus/login.do").forward(request, response);
 	}

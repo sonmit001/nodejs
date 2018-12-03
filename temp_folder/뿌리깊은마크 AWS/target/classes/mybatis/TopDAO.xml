@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Event
+DELIMITER //
+create event event_top
+on schedule
+every 4 DAY_HOUR
+do
+BEGIN
+	create or replace view U_Top5 as select s.url, s.urlname, sum(s.ucount) as ucount from (select u.URL, u.URLNAME, count(*) as ucount from U_BOOK u where u.url is not null and u.abid is null group by u.url, u.urlname order by ucount desc) as s group by s.url order by ucount desc limit 5;
+    create or replace view G_Top5 as select s.url, s.urlname, sum(s.ucount) as ucount from (select u.URL, u.URLNAME, count(*) as ucount from G_BOOK u where u.url is not null and u.abid is null group by u.url, u.urlname order by ucount desc) as s group by s.url order by ucount desc limit 5;
+END //
+ -->
+
+<mapper namespace="site.book.social.dao.TopDAO">
+
+	<select id="selectUTop5" resultType="site.book.social.dto.TopDTO">
+		select URL, URLNAME, UCOUNT from U_Top5
+	</select>
+	
+	<select id="selectGTop5" resultType="site.book.social.dto.TopDTO">
+		select URL, URLNAME, UCOUNT from G_Top5
+	</select>
+
+	
+	<!-- 작성자 파도타기 카테고리 및 URL 가져오기 start -->
+	<select id="getCategoryList" resultType="site.book.user.dto.U_BookDTO">
+		SELECT * FROM U_BOOK JOIN `USER` ON U_BOOK.UID = `USER`.UID WHERE NNAME=#{nname} AND ((URL is null) or (HTAG is not null));
+	</select>
+	<!-- 작성자 파도타기 카테고리 및 URL 가져오기 end -->
+	
+</mapper>

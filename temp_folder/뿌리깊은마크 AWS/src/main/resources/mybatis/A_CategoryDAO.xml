@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="site.book.admin.dao.A_CategoryDAO">
+
+	<select id="selectAllCategory" resultType="site.book.admin.dto.A_CategoryDTO">
+		SELECT ACID, ACNAME, COLOR FROM A_CATEGORY
+	</select>
+
+	<insert id="insertCategory">
+		INSERT INTO A_CATEGORY(ACNAME, COLOR) VALUES(#{acname}, '#000')
+	</insert>
+	
+	<update id="updateCategory">
+		UPDATE A_CATEGORY SET ACNAME = #{acname} WHERE acid = #{acid}
+	</update>
+	
+	<delete id="deleteCategory">
+		DELETE FROM A_CATEGORY WHERE ACID = #{acid}
+	</delete>
+	
+	<update id="updateCategoryColor">
+		UPDATE A_CATEGORY SET COLOR = #{color} WHERE acid = #{acid}
+	</update>
+	
+	<select id="selectMaxACID" resultType="Integer">
+		select MAX(ACID) from A_CATEGORY
+	</select>
+</mapper>

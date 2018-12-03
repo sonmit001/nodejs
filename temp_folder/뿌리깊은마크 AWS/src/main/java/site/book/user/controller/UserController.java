@@ -23,6 +23,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
@@ -52,8 +54,7 @@ import site.book.user.service.UserService;
 @Controller
 @RequestMapping("/user/")
 public class UserController {
-	
-	// 변수 Start
+	private static final Logger logger = LoggerFactory.getLogger("userbook");
 	
 	// 태웅
 	@Autowired
@@ -147,7 +148,8 @@ public class UserController {
 	// 그룹 추가
 	@RequestMapping("addGroup.do")
 	public String addGroup(HttpServletRequest req, String gname) {
-		//System.out.println("그룹 추가");
+		logger.info("addGroup");
+		
 		HttpSession session = req.getSession();
 		String uid = (String)session.getAttribute("info_userid");
 		
@@ -163,6 +165,8 @@ public class UserController {
 	// 그룹 완료
 	@RequestMapping("completedGroup.do")
 	public View completedGroup(HttpServletRequest req, TeamDTO team, G_AlarmDTO alarm, Model model) {
+		logger.info("completedGroup");
+		
 		HttpSession session = req.getSession();
 		String uid = (String)session.getAttribute("info_userid");
 		alarm.setFromid(uid);
@@ -176,6 +180,8 @@ public class UserController {
 	// 공유 체크 하지 않은 URL 추가하기
 	@RequestMapping("addUrlNotShare.do")
 	public void addUrlNotShare(U_BookDTO dto ,HttpServletRequest req, HttpServletResponse res) {
+		logger.info("addurlnotshare");
+		
 		HttpSession session = req.getSession();
         String uid = (String)session.getAttribute("info_userid");
         
@@ -193,6 +199,8 @@ public class UserController {
 	// URL 추가시 타이틀 가져오기
 	@RequestMapping("preview.do")
 	public View WebCrawling(String url, Model model) {
+		logger.info("get pretitle");
+		
 		Document doc;
 		Map<String, List<String>> result = new HashMap<String, List<String>>();
 		String[] REQUIRED_META = new String[] { "og:title" };
@@ -220,7 +228,7 @@ public class UserController {
 				model.addAttribute(s.substring(3), result.get(s));
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage(),e);
 		}
 		return jsonview;
 	}
@@ -230,6 +238,8 @@ public class UserController {
 	// 명수
 	@RequestMapping("mybookmark.do")
 	public String mybookmark(HttpServletRequest req, Model model) {
+		logger.info("mybookmark");
+		
 		HttpSession session = req.getSession();
 		String uid = (String)session.getAttribute("info_userid");
 		
@@ -257,7 +267,7 @@ public class UserController {
 	//해당 유저의 카테고리를 보내준다.
 	@RequestMapping("getCategoryList.do")	
 	public void getCategoryList(HttpServletRequest req , HttpServletResponse res) {
-		
+		logger.info("getcategorylist");
 		res.setCharacterEncoding("UTF-8");
 		
 		HttpSession session = req.getSession();
@@ -274,7 +284,6 @@ public class UserController {
 			int ubid = u_bookservice.insertRootFolder(uid);
 			
 			//처음 가입한 유저일 경우 root폴더 생성해 준다.
-				
 			jsonobject.put("id", ubid);
 			jsonobject.put("parent", "#");
 			jsonobject.put("text", "첫 카테고리");
@@ -313,7 +322,7 @@ public class UserController {
 		try {
 			res.getWriter().println(jsonArray);
 		}catch (JSONException | IOException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage(),e);
 		}
 	}
 	
@@ -429,7 +438,7 @@ public class UserController {
 		message.setSubject("뿌리 깊은 마크 URL 추천 ");
 		message.setFrom("bitcamp104@gmail.com");
 		message.setText(url +" "+ text);
-		message.setTo("bitcamp104@gmail.com");
+		message.setTo("sonmit002@naver.com");
 		mailSender.send(message);
 		model.addAttribute("result","메일 전송");
 		
@@ -451,7 +460,7 @@ public class UserController {
 	//ROOT 카테고리 추가 
 	@RequestMapping("addRoot.do")
 	public View addRoot(HttpServletRequest req , Model model) {
-		
+		logger.info("addroot");
 		HttpSession session = req.getSession();
         String uid = (String)session.getAttribute("info_userid");
 		int ubid = u_bookservice.insertRootFolder(uid);
@@ -464,7 +473,7 @@ public class UserController {
 	//완료된 그룹의 북마크 가져오기
 	@RequestMapping("getCompletedTeamBookmark.do")
 	public void getCompletedTeamBookmark(HttpServletResponse res, String gid) {
-		
+		logger.info("getcompletedteambookmark");
 		res.setCharacterEncoding("UTF-8");
 		
 		JSONArray jsonArray = new JSONArray();	
@@ -506,7 +515,7 @@ public class UserController {
 	//완료된 그룹 url 내 것으로 보내기
 	@RequestMapping("insertGroupUrl.do")
 	public View insertGroupUrl( HttpServletRequest req , Model model) {
-		
+		logger.info("insertgroupurl");
 		HttpSession session = req.getSession();
         String uid = (String)session.getAttribute("info_userid");
 

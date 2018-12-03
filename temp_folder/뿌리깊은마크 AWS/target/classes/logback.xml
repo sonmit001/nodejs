@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+<!-- 30초마다 설정 파일의 변경을 확인한다. 파일이 변경되면 다시 로딩한다 -->
+<configuration scan="true" scanperiod="30 seconds">
+
+	<!-- <property file="${catalina.home}/conf/x1.properties" /> -->
+
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%5p [%d] \(%F[%M]:%L\) - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="member" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${catalina.home}/logs/member.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${catalina.home}/logs/member.%d{yyyy-MM-dd}.out</fileNamePattern>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%5p [%d] \(%F[%M]:%L\) - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="userbook" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${catalina.home}/logs/order.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${catalina.home}/logs/order.%d{yyyy-MM-dd}.out</fileNamePattern>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%5p [%d] \(%F[%M]:%L\) - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+<!-- 	<appender name="EMAIL" class="com.emoney.web.util.CustomSMTPAppender">
+		<evaluator class="com.emoney.web.util.TimeBasedEventEvaluator" />
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<smtpHost>smtp.gmail.com</smtpHost>
+		<smtpPort>465</smtpPort>
+		<SSL>true</SSL>
+		<username>yWuMlRuqrXf6EXQjzlxM0KK0L0chGzZ46+bsNvcdEaA=</username>
+		<password>c8h5eTfRIoW7d0fHVlAr2Q==</password>
+		<to></to>
+		<subject>${hostname} - %m</subject>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d{yyyy-MM-dd HH:mm:ss}: %-5level %n%msg%n</pattern>
+		</layout>
+	</appender> -->
+	
+	<logger name="org.springframework" level="error" />
+	<logger name="org.mybatis" level="error" />
+	<logger name="com.oracle" level="error" />
+	
+	<!-- login log -->
+	<logger name="member" additivity="false">
+	        <level value="INFO" />
+	        <appender-ref ref="member"/>
+	</logger>
+	<logger name="userbook" additivity="false">
+	        <level value="INFO" />
+	        <appender-ref ref="userbook"/>
+	</logger>
+	
+	<root level="info">
+		<appender-ref ref="console" />
+		<!-- <if condition='property("email").equals("real")'><then>
+		<appender-ref ref="EMAIL" />
+		</then></if> -->
+	</root>
+</configuration>
